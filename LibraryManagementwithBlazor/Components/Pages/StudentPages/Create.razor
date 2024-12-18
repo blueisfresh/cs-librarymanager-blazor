@@ -1,7 +1,9 @@
 ﻿@page "/students/create"
+@using LibraryManagementwithBlazor.Services
 @using Microsoft.EntityFrameworkCore
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 @inject NavigationManager NavigationManager
+@inject StudentService studentService
 
 <PageTitle>Create</PageTitle>
 
@@ -46,9 +48,8 @@
     // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddStudent()
     {
-        using var context = DbFactory.CreateDbContext();
-        context.TblStudent.Add(Student);
-        await context.SaveChangesAsync();
+        await studentService.AddStudentAsync(Student); // Use the injected instance
         NavigationManager.NavigateTo("/students");
     }
+
 }

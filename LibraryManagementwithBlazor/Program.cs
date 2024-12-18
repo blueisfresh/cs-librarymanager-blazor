@@ -2,10 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using LibraryManagementwithBlazor.Data;
+using LibraryManagementwithBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContextFactory<LibraryManagementwithBlazorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LibraryManagementwithBlazorContext") ?? throw new InvalidOperationException("Connection string 'LibraryManagementwithBlazorContext' not found.")));
+
+builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<StudentService>();
+builder.Services.AddScoped<BorrowService>();
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
