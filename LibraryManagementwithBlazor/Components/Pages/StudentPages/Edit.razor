@@ -20,7 +20,7 @@ else
             <EditForm method="post" Model="Student" OnValidSubmit="UpdateStudent" FormName="edit" Enhance>
                 <DataAnnotationsValidator />
                 <ValidationSummary role="alert"/>
-                <input type="hidden" name="Student.LibraryCardNum" value="@Student.LibraryCardNum" />
+                <input name="Student.LibraryCardNum" value="@Student.LibraryCardNum" />
                 <div class="mb-3">
                     <label for="firstname" class="form-label">FirstName:</label>
                     <InputText id="firstname" @bind-Value="Student.FirstName" class="form-control" />

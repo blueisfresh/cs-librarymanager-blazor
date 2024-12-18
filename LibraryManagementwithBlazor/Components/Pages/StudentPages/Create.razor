@@ -15,6 +15,12 @@
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" role="alert"/>
             <div class="mb-3">
+                <label for="librarycardnum" class="form-label">Library Card Number:</label>
+                <InputNumber id="librarycardnum" @bind-Value="Student.LibraryCardNum" class="form-control" />
+                <ValidationMessage For="() => Student.LibraryCardNum" class="text-danger" />
+            </div>
+
+            <div class="mb-3">
                 <label for="firstname" class="form-label">FirstName:</label> 
                 <InputText id="firstname" @bind-Value="Student.FirstName" class="form-control" /> 
                 <ValidationMessage For="() => Student.FirstName" class="text-danger" /> 
