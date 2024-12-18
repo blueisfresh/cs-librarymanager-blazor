@@ -7932,11 +7932,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
+      "projectUniqueName": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
       "projectName": "LibraryManagementwithBlazor",
-      "projectPath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
+      "projectPath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
       "packagesPath": "C:\\Users\\elias\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\",
+      "outputPath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

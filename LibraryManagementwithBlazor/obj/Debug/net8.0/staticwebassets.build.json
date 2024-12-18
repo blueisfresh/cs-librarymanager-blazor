@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/SD0F6rd2/76+fHZ91sRKTdwAxrnmIqyfa7Z1d0aopk=",
+  "Hash": "9HC5rS4YlLlneUaynnSLwkAboXnPW1AQyEgaf3eDp18=",
   "Source": "LibraryManagementwithBlazor",
   "BasePath": "_content/LibraryManagementwithBlazor",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "LibraryManagementwithBlazor\\wwwroot",
       "Source": "LibraryManagementwithBlazor",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "Pattern": "**"
     }
@@ -55,10 +55,10 @@
       "OriginalItemSpec": "C:\\Users\\elias\\.nuget\\packages\\microsoft.aspnetcore.components.quickgrid\\8.0.11\\staticwebassets\\QuickGrid.razor.js"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\LibraryManagementwithBlazor.styles.css",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\LibraryManagementwithBlazor.styles.css",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "LibraryManagementwithBlazor.styles.css",
       "AssetKind": "All",
@@ -71,13 +71,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\LibraryManagementwithBlazor.styles.css"
+      "OriginalItemSpec": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\bundle\\LibraryManagementwithBlazor.styles.css"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryManagementwithBlazor.bundle.scp.css",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryManagementwithBlazor.bundle.scp.css",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "LibraryManagementwithBlazor.bundle.scp.css",
       "AssetKind": "All",
@@ -90,13 +90,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryManagementwithBlazor.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\LibraryManagementwithBlazor.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\app.css",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -131,10 +131,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -150,10 +150,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\favicon.png",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\wwwroot\\",
       "BasePath": "_content/LibraryManagementwithBlazor",
       "RelativePath": "favicon.png",
       "AssetKind": "All",
