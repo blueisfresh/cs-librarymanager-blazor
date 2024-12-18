@@ -1,0 +1,53 @@
+﻿@page "/borrows/details"
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Borrow</h2>
+    <hr />
+    @if (borrow is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">StudentLibraryCardNum</dt>
+            <dd class="col-sm-10">@borrow.StudentLibraryCardNum</dd>
+            <dt class="col-sm-2">BookBookNum</dt>
+            <dd class="col-sm-10">@borrow.BookBookNum</dd>
+            <dt class="col-sm-2">BorrowDate</dt>
+            <dd class="col-sm-10">@borrow.BorrowDate</dd>
+            <dt class="col-sm-2">ReturnDate</dt>
+            <dd class="col-sm-10">@borrow.ReturnDate</dd>
+            <dt class="col-sm-2">DueDate</dt>
+            <dd class="col-sm-10">@borrow.DueDate</dd>
+        </dl>
+        <div>
+            <a href="@($"/borrows/edit?borrowid={borrow.BorrowID}")">Edit</a> |
+            <a href="@($"/borrows")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Borrow? borrow;
+
+    [SupplyParameterFromQuery]
+    private int BorrowID { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        borrow = await context.TblBorrow.FirstOrDefaultAsync(m => m.BorrowID == BorrowID);
+
+        if (borrow is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

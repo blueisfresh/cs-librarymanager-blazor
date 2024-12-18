@@ -1,0 +1,70 @@
+﻿@page "/borrows/delete"
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Delete</PageTitle>
+
+<h1>Delete</h1>
+
+<p>Are you sure you want to delete this?</p>
+<div>
+    <h2>Borrow</h2>
+    <hr />
+    @if (borrow is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">StudentLibraryCardNum</dt>
+            <dd class="col-sm-10">@borrow.StudentLibraryCardNum</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">BookBookNum</dt>
+            <dd class="col-sm-10">@borrow.BookBookNum</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">BorrowDate</dt>
+            <dd class="col-sm-10">@borrow.BorrowDate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">ReturnDate</dt>
+            <dd class="col-sm-10">@borrow.ReturnDate</dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">DueDate</dt>
+            <dd class="col-sm-10">@borrow.DueDate</dd>
+        </dl>
+        <EditForm method="post" Model="borrow" OnValidSubmit="DeleteBorrow" FormName="delete" Enhance>
+            <button type="submit" class="btn btn-danger" disabled="@(borrow is null)">Delete</button> |
+            <a href="/borrows">Back to List</a>
+        </EditForm>
+    }
+</div>
+
+@code {
+    private Borrow? borrow;
+
+    [SupplyParameterFromQuery]
+    private int BorrowID { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        borrow = await context.TblBorrow.FirstOrDefaultAsync(m => m.BorrowID == BorrowID);
+
+        if (borrow is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+
+    private async Task DeleteBorrow()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.TblBorrow.Remove(borrow!);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/borrows");
+    }
+}

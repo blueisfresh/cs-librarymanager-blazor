@@ -1,0 +1,55 @@
+﻿@page "/books/details"
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Details</PageTitle>
+
+<h1>Details</h1>
+
+<div>
+    <h2>Book</h2>
+    <hr />
+    @if (book is null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else {
+        <dl class="row">
+            <dt class="col-sm-2">Title</dt>
+            <dd class="col-sm-10">@book.Title</dd>
+            <dt class="col-sm-2">Author</dt>
+            <dd class="col-sm-10">@book.Author</dd>
+            <dt class="col-sm-2">Publisher</dt>
+            <dd class="col-sm-10">@book.Publisher</dd>
+            <dt class="col-sm-2">ISBN</dt>
+            <dd class="col-sm-10">@book.ISBN</dd>
+            <dt class="col-sm-2">PublicationPlace</dt>
+            <dd class="col-sm-10">@book.PublicationPlace</dd>
+            <dt class="col-sm-2">PublicationDate</dt>
+            <dd class="col-sm-10">@book.PublicationDate</dd>
+        </dl>
+        <div>
+            <a href="@($"/books/edit?booknum={book.BookNum}")">Edit</a> |
+            <a href="@($"/books")">Back to List</a>
+        </div>
+    }
+</div>
+
+@code {
+    private Book? book;
+
+    [SupplyParameterFromQuery]
+    private string BookNum { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var context = DbFactory.CreateDbContext();
+        book = await context.TblBook.FirstOrDefaultAsync(m => m.BookNum == BookNum);
+
+        if (book is null)
+        {
+            NavigationManager.NavigateTo("notfound");
+        }
+    }
+}

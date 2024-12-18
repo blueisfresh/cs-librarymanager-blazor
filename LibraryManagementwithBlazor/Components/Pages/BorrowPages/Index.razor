@@ -1,0 +1,39 @@
+﻿@page "/borrows"
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using LibraryManagementwithBlazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+
+<PageTitle>Index</PageTitle>
+
+<h1>Index</h1>
+
+<p>
+    <a href="borrows/create">Create New</a>
+</p>
+
+<QuickGrid Class="table" Items="context.TblBorrow">
+    <PropertyColumn Property="borrow => borrow.StudentLibraryCardNum" />
+    <PropertyColumn Property="borrow => borrow.BookBookNum" />
+    <PropertyColumn Property="borrow => borrow.BorrowDate" />
+    <PropertyColumn Property="borrow => borrow.ReturnDate" />
+    <PropertyColumn Property="borrow => borrow.DueDate" />
+
+    <TemplateColumn Context="borrow">
+        <a href="@($"borrows/edit?borrowid={borrow.BorrowID}")">Edit</a> |
+        <a href="@($"borrows/details?borrowid={borrow.BorrowID}")">Details</a> |
+        <a href="@($"borrows/delete?borrowid={borrow.BorrowID}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+@code {
+    private LibraryManagementwithBlazorContext context = default!;
+
+    protected override void OnInitialized()
+    {
+        context = DbFactory.CreateDbContext();
+    }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+}

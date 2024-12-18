@@ -1,0 +1,63 @@
+﻿@page "/borrows/create"
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@inject NavigationManager NavigationManager
+
+<PageTitle>Create</PageTitle>
+
+<h1>Create</h1>
+
+<h2>Borrow</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm method="post" Model="Borrow" OnValidSubmit="AddBorrow" FormName="create" Enhance>
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" role="alert"/>
+            <div class="mb-3">
+                <label for="studentlibrarycardnum" class="form-label">StudentLibraryCardNum:</label> 
+                <InputNumber id="studentlibrarycardnum" @bind-Value="Borrow.StudentLibraryCardNum" class="form-control" /> 
+                <ValidationMessage For="() => Borrow.StudentLibraryCardNum" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="bookbooknum" class="form-label">BookBookNum:</label> 
+                <InputText id="bookbooknum" @bind-Value="Borrow.BookBookNum" class="form-control" /> 
+                <ValidationMessage For="() => Borrow.BookBookNum" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="borrowdate" class="form-label">BorrowDate:</label> 
+                <InputDate id="borrowdate" @bind-Value="Borrow.BorrowDate" class="form-control" /> 
+                <ValidationMessage For="() => Borrow.BorrowDate" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="returndate" class="form-label">ReturnDate:</label> 
+                <InputDate id="returndate" @bind-Value="Borrow.ReturnDate" class="form-control" /> 
+                <ValidationMessage For="() => Borrow.ReturnDate" class="text-danger" /> 
+            </div>        
+            <div class="mb-3">
+                <label for="duedate" class="form-label">DueDate:</label> 
+                <InputDate id="duedate" @bind-Value="Borrow.DueDate" class="form-control" /> 
+                <ValidationMessage For="() => Borrow.DueDate" class="text-danger" /> 
+            </div>        
+            <button type="submit" class="btn btn-primary">Create</button>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a href="/borrows">Back to List</a>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    private Borrow Borrow { get; set; } = new();
+
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private async Task AddBorrow()
+    {
+        using var context = DbFactory.CreateDbContext();
+        context.TblBorrow.Add(Borrow);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/borrows");
+    }
+}
