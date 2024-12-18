@@ -43,6 +43,13 @@ else
     <a href="/students">Back to List</a>
 </div>
 
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+
 @code {
     // UpdateStudentAsync
 
@@ -51,6 +58,8 @@ else
 
     [SupplyParameterFromForm]
     private Student? Student { get; set; }
+
+    private string? errorMessage; // Declare the variable to store error messages
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,31 +76,26 @@ else
     // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task UpdateStudent()
     {
-        using var context = DbFactory.CreateDbContext();
-        context.Attach(Student!).State = EntityState.Modified;
-
         try
         {
-            await context.SaveChangesAsync();
+            // Check if the student exists before updating
+            var exists = await studentService.StudentExistsAsync(Student!.LibraryCardNum);
+            if (!exists)
+            {
+                errorMessage = "Student not found."; // Display error
+                return; // Exit the method early
+            }
+
+            // Proceed to update the student
+            await studentService.UpdateStudentAsync(Student);
+            NavigationManager.NavigateTo("/students"); // Redirect on success
         }
-        catch (DbUpdateConcurrencyException)
+        catch (Exception e)
         {
-            if (!StudentExists(Student!.LibraryCardNum))
-            {
-                NavigationManager.NavigateTo("notfound");
-            }
-            else
-            {
-                throw;
-            }
+            errorMessage = e.Message; // Capture any other errors
         }
 
         NavigationManager.NavigateTo("/students");
     }
 
-    private bool StudentExists(int librarycardnum)
-    {
-        using var context = DbFactory.CreateDbContext();
-        return context.TblStudent.Any(e => e.LibraryCardNum == librarycardnum);
-    }
 }
