@@ -22,6 +22,11 @@ else
                 <ValidationSummary role="alert"/>
                 <input type="hidden" name="Book.BookNum" value="@Book.BookNum" />
                 <div class="mb-3">
+                    <label for="title" class="form-label">Book Number:</label>
+                    <InputText id="title" @bind-Value="Book.BookNum" class="form-control" />
+                    <ValidationMessage For="() => Book.BookNum" class="text-danger" />
+                </div>
+                <div class="mb-3">
                     <label for="title" class="form-label">Title:</label>
                     <InputText id="title" @bind-Value="Book.Title" class="form-control" />
                     <ValidationMessage For="() => Book.Title" class="text-danger" />
