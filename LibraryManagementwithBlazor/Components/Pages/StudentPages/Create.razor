@@ -1,9 +1,7 @@
 ﻿@page "/students/create"
-@using LibraryManagementwithBlazor.Services
 @using Microsoft.EntityFrameworkCore
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 @inject NavigationManager NavigationManager
-@inject StudentService studentService
 
 <PageTitle>Create</PageTitle>
 
@@ -17,19 +15,13 @@
             <DataAnnotationsValidator />
             <ValidationSummary class="text-danger" role="alert"/>
             <div class="mb-3">
-                <label for="librarycardnum" class="form-label">Library Card Number:</label>
-                <InputNumber id="librarycardnum" @bind-Value="Student.LibraryCardNum" class="form-control" />
-                <ValidationMessage For="() => Student.LibraryCardNum" class="text-danger" />
-            </div>
-
-            <div class="mb-3">
                 <label for="firstname" class="form-label">FirstName:</label> 
-                <InputText id="firstname" @bind-Value="Student.FirstName" class="form-control" /> 
+                <InputText id="firstname" @bind-Value="Student.FirstName" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.FirstName" class="text-danger" /> 
             </div>        
             <div class="mb-3">
                 <label for="lastname" class="form-label">LastName:</label> 
-                <InputText id="lastname" @bind-Value="Student.LastName" class="form-control" /> 
+                <InputText id="lastname" @bind-Value="Student.LastName" class="form-control" aria-required="true"/> 
                 <ValidationMessage For="() => Student.LastName" class="text-danger" /> 
             </div>        
             <button type="submit" class="btn btn-primary">Create</button>
@@ -41,31 +33,16 @@
     <a href="/students">Back to List</a>
 </div>
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger" role="alert">
-        @errorMessage
-    </div>
-}
-
-
 @code {
     [SupplyParameterFromForm]
     private Student Student { get; set; } = new();
 
-    private string? errorMessage; // Declare the variable to store error messages
-
+    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddStudent()
     {
-        try
-        {
-            await studentService.AddStudentAsync(Student); // Use the injected instance
-            NavigationManager.NavigateTo("/students");
-        }
-        catch (Exception e)
-        {
-            errorMessage = e.Message; // Capture the exception message
-        }
+        using var context = DbFactory.CreateDbContext();
+        context.TblStudent.Add(Student);
+        await context.SaveChangesAsync();
+        NavigationManager.NavigateTo("/students");
     }
 }
-

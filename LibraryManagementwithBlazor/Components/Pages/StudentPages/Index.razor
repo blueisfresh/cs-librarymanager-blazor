@@ -1,111 +1,36 @@
 ﻿@page "/students"
-@using LibraryManagementwithBlazor.Services
-@inject StudentService studentService
-@inject NavigationManager NavigationManager
+@using Microsoft.EntityFrameworkCore
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using LibraryManagementwithBlazor.Data
+@implements IAsyncDisposable
+@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 
-<PageTitle>Students</PageTitle>
+<PageTitle>Index</PageTitle>
 
-<h1>Students</h1>
-
-<div>
-    <form method="get" action="/students">
-        <input type="search" name="titleFilter" placeholder="Search by first name..." />
-        <input type="submit" value="Search" class="btn btn-primary" />
-    </form>
-</div>
+<h1>Index</h1>
 
 <p>
-    <a href="students/create" class="btn btn-success">Create New</a>
+    <a href="students/create">Create New</a>
 </p>
 
-@if (!string.IsNullOrWhiteSpace(TitleFilter) && searchedStudents.Any())
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Library Card Number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var student in searchedStudents)
-            {
-                <tr>
-                    <td>@student.LibraryCardNum</td>
-                    <td>@student.FirstName</td>
-                    <td>@student.LastName</td>
-                    <td>
-                        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-info">Details</a>
-                        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<QuickGrid Class="table" Items="context.TblStudent">
+    <PropertyColumn Property="student => student.FirstName" />
+    <PropertyColumn Property="student => student.LastName" />
 
-    <div>
-        <a href="/students">Back to List</a>
-    </div>
-}
-else if (filteredStudents.Any())
-{
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Library Card Number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var student in filteredStudents)
-            {
-                <tr>
-                    <td>@student.LibraryCardNum</td>
-                    <td>@student.FirstName</td>
-                    <td>@student.LastName</td>
-                    <td>
-                        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-info">Details</a>
-                        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>No students found.</p>
-}
+    <TemplateColumn Context="student">
+        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")">Edit</a> |
+        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")">Details</a> |
+        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
 
 @code {
-    [SupplyParameterFromQuery]
-    private string? TitleFilter { get; set; }
+    private LibraryManagementwithBlazorContext context = default!;
 
-    private List<Student> filteredStudents = new();
-    private List<Student> searchedStudents = new();
-
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        try
-        {
-            if (!string.IsNullOrWhiteSpace(TitleFilter))
-            {
-                searchedStudents = await studentService.GetSearchedStudentsAsync(TitleFilter);
-            }
-            else
-            {
-                filteredStudents = await studentService.GetFilteredStudentsAsync();
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error fetching students: {ex.Message}");
-        }
+        context = DbFactory.CreateDbContext();
     }
+
+    public async ValueTask DisposeAsync() => await context.DisposeAsync();
 }
