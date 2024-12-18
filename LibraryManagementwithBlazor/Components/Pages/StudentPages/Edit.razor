@@ -1,6 +1,8 @@
 ﻿@page "/students/edit"
 @using Microsoft.EntityFrameworkCore
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@using LibraryManagementwithBlazor.Services
+@inject StudentService studentService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Edit</PageTitle>
@@ -42,6 +44,8 @@ else
 </div>
 
 @code {
+    // UpdateStudentAsync
+
     [SupplyParameterFromQuery]
     private int LibraryCardNum { get; set; }
 
