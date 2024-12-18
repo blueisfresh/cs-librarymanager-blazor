@@ -51,8 +51,6 @@ else
 }
 
 @code {
-    // UpdateStudentAsync
-
     [SupplyParameterFromQuery]
     private int LibraryCardNum { get; set; }
 
@@ -94,8 +92,5 @@ else
         {
             errorMessage = e.Message; // Capture any other errors
         }
-
-        NavigationManager.NavigateTo("/students");
     }
-
 }

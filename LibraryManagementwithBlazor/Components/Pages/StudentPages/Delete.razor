@@ -1,6 +1,8 @@
 ﻿@page "/students/delete"
 @using Microsoft.EntityFrameworkCore
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@using LibraryManagementwithBlazor.Services
+@inject StudentService studentService
 @inject NavigationManager NavigationManager
 
 <PageTitle>Delete</PageTitle>
@@ -35,9 +37,17 @@
     }
 </div>
 
-@code {
-    // DeleteStudentAsync
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
 
+@code {
+
+    // DeleteStudentAsync
+    private string? errorMessage; // Declare the variable to store error messages
     private Student? student;
 
     [SupplyParameterFromQuery]
@@ -56,9 +66,23 @@
 
     private async Task DeleteStudent()
     {
-        using var context = DbFactory.CreateDbContext();
-        context.TblStudent.Remove(student!);
-        await context.SaveChangesAsync();
-        NavigationManager.NavigateTo("/students");
+        try
+        {
+            // Check if the student exists before deleting
+            var exists = await studentService.StudentExistsAsync(student!.LibraryCardNum);
+            if (!exists)
+            {
+                errorMessage = "Student not found."; // Display error
+                return; // Exit the method early
+            }
+
+            await studentService.DeleteStudentAsync(LibraryCardNum);
+            NavigationManager.NavigateTo("/students"); // Redirect on success
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message; // Capture any other errors
+        }
     }
+
 }
