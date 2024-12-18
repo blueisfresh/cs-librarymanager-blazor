@@ -7,11 +7,18 @@
 
 <h1>Students</h1>
 
+<div>
+    <form method="get" action="/students">
+        <input type="search" name="titleFilter" placeholder="Search by first name..." />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>
+</div>
+
 <p>
-    <a href="students/create" class="btn btn-primary">Create New</a>
+    <a href="students/create" class="btn btn-success">Create New</a>
 </p>
 
-@if (students != null && students.Any())
+@if (!string.IsNullOrWhiteSpace(TitleFilter) && searchedStudents.Any())
 {
     <table class="table table-striped">
         <thead>
@@ -23,7 +30,39 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var student in students)
+            @foreach (var student in searchedStudents)
+            {
+                <tr>
+                    <td>@student.LibraryCardNum</td>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>
+                        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-info">Details</a>
+                        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <a href="/students">Back to List</a>
+    </div>
+}
+else if (filteredStudents.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Library Card Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in filteredStudents)
             {
                 <tr>
                     <td>@student.LibraryCardNum</td>
@@ -41,14 +80,32 @@
 }
 else
 {
-    <p>No students available.</p>
+    <p>No students found.</p>
 }
 
 @code {
-    private List<Student> students = new();
+    [SupplyParameterFromQuery]
+    private string? TitleFilter { get; set; }
+
+    private List<Student> filteredStudents = new();
+    private List<Student> searchedStudents = new();
 
     protected override async Task OnInitializedAsync()
     {
-        students = await studentService.GetAllStudentsAsync();
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(TitleFilter))
+            {
+                searchedStudents = await studentService.GetSearchedStudentsAsync(TitleFilter);
+            }
+            else
+            {
+                filteredStudents = await studentService.GetFilteredStudentsAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching students: {ex.Message}");
+        }
     }
 }
