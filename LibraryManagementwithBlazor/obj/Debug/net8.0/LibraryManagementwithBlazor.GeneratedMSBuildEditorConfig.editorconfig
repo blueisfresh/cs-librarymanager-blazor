@@ -50,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb29rUGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/BorrowedBooks.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb3Jyb3dlZEJvb2tzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/BorrowPages/Create.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb3Jyb3dQYWdlc1xDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -70,8 +74,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb3Jyb3dQYWdlc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/BorrowReturnPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb3Jyb3dSZXR1cm5QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Error.razor]
@@ -80,6 +84,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/ImportExport.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbXBvcnRFeHBvcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Statistics.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdGF0aXN0aWNzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/StudentPages/Create.razor]

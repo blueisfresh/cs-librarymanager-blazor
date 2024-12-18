@@ -1,0 +1,43 @@
+﻿@page "/borrowedbooks"
+@inject BorrowService BorrowService
+@using LibraryManagementwithBlazor.Services
+
+<h3>Borrowed Books</h3>
+
+@if (borrowedBooks == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Book Number</th>
+                <th>Student ID</th>
+                <th>Borrow Date</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in borrowedBooks)
+            {
+                <tr>
+                    <td>@book.BookBookNum</td>
+                    <td>@book.StudentLibraryCardNum</td>
+                    <td>@book.BorrowDate</td>
+                    <td>@book.DueDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Borrow> borrowedBooks;
+
+    protected override async Task OnInitializedAsync()
+    {
+        borrowedBooks = await BorrowService.GetAllBorrowedBooksAsync();
+    }
+}

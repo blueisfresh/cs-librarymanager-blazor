@@ -86,5 +86,26 @@ namespace LibraryManagementwithBlazor.Services
             borrow.DueDate = newDueDate;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<KeyValuePair<string, int>>> GetTopBorrowedBooksAsync(int topCount)
+        {
+            var query = await _context.TblBorrow
+                .GroupBy(b => b.BookBookNum)
+                .Select(g => new { BookNum = g.Key, Count = g.Count() })
+                .OrderByDescending(g => g.Count)
+                .Take(topCount)
+                .ToListAsync(); // Executes the query in SQL and fetches the data
+
+            // Transform the result into a list of KeyValuePair
+            return query.Select(g => new KeyValuePair<string, int>(g.BookNum, g.Count)).ToList();
+        }
+
+        public async Task<Borrow?> GetBorrowRecordByBookNumAsync(string bookNum)
+        {
+            return await _context.TblBorrow
+                .Where(b => b.BookBookNum == bookNum && b.ReturnDate == null)
+                .FirstOrDefaultAsync();
+        }
+
     }
 }

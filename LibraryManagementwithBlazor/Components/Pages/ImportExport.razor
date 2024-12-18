@@ -1,0 +1,63 @@
+﻿@page "/importexport"
+@using Newtonsoft.Json
+@inject BorrowService BorrowService
+@inject BorrowService StudentService
+@inject BorrowService BookService
+@using LibraryManagementwithBlazor.Services
+
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-6">
+    <h3 class="text-xl font-bold text-center">Import / Export von Daten</h3>
+
+    <!-- Export Section -->
+    <div class="space-y-4">
+        <h4 class="font-semibold">Exportieren</h4>
+        <div class="flex items-center space-x-4">
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" class="w-4 h-4" />
+                <span>Bücher</span>
+            </label>
+            <label class="flex items-center space-x-2">
+                <input type="checkbox" class="w-4 h-4" />
+                <span>Schüler</span>
+            </label>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span>Datei Format:</span>
+            <span class="font-medium">JSON</span>
+        </div>
+        <div class="text-center">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Exportieren</button>
+        </div>
+    </div>
+
+    <!-- Import Section -->
+    <div class="space-y-4">
+        <h4 class="font-semibold">Importieren</h4>
+        <div class="flex items-center space-x-4">
+            <span>Importieren als:</span>
+            <select class="p-2 border border-gray-300 rounded-md w-full">
+                <option>Bücher</option>
+                <option>Schüler</option>
+            </select>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span>Datei auswählen:</span>
+            <input type="text" readonly class="w-full p-2 border border-gray-300 rounded-md" placeholder="Keine Datei ausgewählt" />
+            <button class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Durchsuchen</button>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span>Datei Format:</span>
+            <span class="font-medium">JSON</span>
+        </div>
+        <div class="text-center">
+            <button class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Importieren</button>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+        <button class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+            Zurück zum Hauptmenü
+        </button>
+    </div>
+</div>
