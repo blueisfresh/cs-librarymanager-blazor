@@ -1,37 +1,54 @@
 ﻿@page "/students"
-@using Microsoft.EntityFrameworkCore
-@using Microsoft.AspNetCore.Components.QuickGrid
-@using LibraryManagementwithBlazor.Data
-@implements IAsyncDisposable
-@inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
+@using LibraryManagementwithBlazor.Services
+@inject StudentService studentService
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Students</PageTitle>
 
-<h1>Index</h1>
+<h1>Students</h1>
 
 <p>
-    <a href="students/create">Create New</a>
+    <a href="students/create" class="btn btn-primary">Create New</a>
 </p>
 
-<QuickGrid Class="table" Items="context.TblStudent">
-    <PropertyColumn Property="student => student.LibraryCardNum" />
-    <PropertyColumn Property="student => student.FirstName" />
-    <PropertyColumn Property="student => student.LastName" />
-
-    <TemplateColumn Context="student">
-        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")">Edit</a> |
-        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")">Details</a> |
-        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")">Delete</a>
-    </TemplateColumn>
-</QuickGrid>
+@if (students != null && students.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Library Card Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var student in students)
+            {
+                <tr>
+                    <td>@student.LibraryCardNum</td>
+                    <td>@student.FirstName</td>
+                    <td>@student.LastName</td>
+                    <td>
+                        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-info">Details</a>
+                        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No students available.</p>
+}
 
 @code {
-    private LibraryManagementwithBlazorContext context = default!;
+    private List<Student> students = new();
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        context = DbFactory.CreateDbContext();
+        students = await studentService.GetAllStudentsAsync();
     }
-
-    public async ValueTask DisposeAsync() => await context.DisposeAsync();
 }

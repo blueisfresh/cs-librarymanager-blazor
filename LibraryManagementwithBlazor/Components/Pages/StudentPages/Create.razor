@@ -41,15 +41,31 @@
     <a href="/students">Back to List</a>
 </div>
 
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+
+
 @code {
     [SupplyParameterFromForm]
     private Student Student { get; set; } = new();
 
-    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
+    private string? errorMessage; // Declare the variable to store error messages
+
     private async Task AddStudent()
     {
-        await studentService.AddStudentAsync(Student); // Use the injected instance
-        NavigationManager.NavigateTo("/students");
+        try
+        {
+            await studentService.AddStudentAsync(Student); // Use the injected instance
+            NavigationManager.NavigateTo("/students");
+        }
+        catch (Exception e)
+        {
+            errorMessage = e.Message; // Capture the exception message
+        }
     }
-
 }
+
