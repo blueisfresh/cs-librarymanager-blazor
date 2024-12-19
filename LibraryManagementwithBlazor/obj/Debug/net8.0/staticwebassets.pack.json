@@ -29,10 +29,6 @@
       "PackagePath": "staticwebassets\\Resources\\import.png"
     },
     {
-      "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import_export.png",
-      "PackagePath": "staticwebassets\\Resources\\import_export.png"
-    },
-    {
       "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\statistics.png",
       "PackagePath": "staticwebassets\\Resources\\statistics.png"
     },
