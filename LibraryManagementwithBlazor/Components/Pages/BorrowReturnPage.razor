@@ -26,7 +26,7 @@
         <div class="flex items-center space-x-4">
             <label for="bookNumber" class="font-medium">Buchnummer:</label>
             <input type="text" id="bookNumber" class="w-24 p-2 border border-gray-300 rounded-md" placeholder="Book Number" @bind="BookNumber" />
-            <button class="px-4 py-2 bg-blue-500 text-white rounded-md" @onclick="AddBookToList">Add</button>
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-md" @onclick="AddBookToSelectedList">Add</button>
         </div>
     </div>
 
@@ -35,34 +35,102 @@
         <ul class="space-y-1">
             @foreach (var book in SelectedBooks)
             {
-                <li class="p-2 bg-gray-100 rounded-md">@book</li>
+                <li class="p-2 bg-gray-100 rounded-md">@book.Title (@book.BookNum)</li>
             }
         </ul>
     </div>
 
     <div class="text-center">
-        <button class="px-6 py-2 bg-green-500 text-white rounded-md">Bestätigen</button>
+        <button class="px-6 py-2 bg-green-500 text-white rounded-md" @onclick="ExecuteBorrowOrReturn">Bestätigen</button>
     </div>
 </div>
 
 @code {
     private string StudentId { get; set; } = string.Empty;
     private string BookNumber { get; set; } = string.Empty;
-    private List<string> SelectedBooks { get; set; } = new List<string>();
-    private string Action { get; set; } = string.Empty;
+    private List<Book> SelectedBooks { get; set; } = new List<Book>();
+    private bool IsBorrowing { get; set; } = true;
 
-    private void AddBookToList()
+    private async Task AddBookToSelectedList()
     {
-        if (!string.IsNullOrWhiteSpace(BookNumber))
+        if (!string.IsNullOrEmpty(BookNumber))
         {
-            SelectedBooks.Add(BookNumber);
-            BookNumber = string.Empty; // Clear the input field
-            StateHasChanged(); // Force UI update
+            var book = await BookService.GetBookByIdAsync(BookNumber);
+            if (book != null)
+            {
+                SelectedBooks.Add(book);
+                BookNumber = string.Empty; // Clear the input field
+            }
+            else
+            {
+                await NotifyAsync("Book not found.");
+            }
         }
+    }
+
+    private async Task ExecuteBorrowOrReturn()
+    {
+        if (string.IsNullOrEmpty(StudentId))
+        {
+            await NotifyAsync("Please enter a student ID.");
+            return;
+        }
+
+        if (!int.TryParse(StudentId, out var libraryCardNum))
+        {
+            await NotifyAsync("Invalid student ID format.");
+            return;
+        }
+
+        var student = await StudentService.GetStudentByLibraryCardNumAsync(libraryCardNum);
+        if (student == null)
+        {
+            await NotifyAsync("Student not found.");
+            return;
+        }
+
+        if (IsBorrowing)
+        {
+            foreach (var book in SelectedBooks)
+            {
+                var borrow = new Borrow
+                    {
+                        StudentLibraryCardNum = libraryCardNum,
+                        BookBookNum = book.BookNum,
+                        DueDate = DateTime.Now.AddMonths(3)
+                    };
+                await BorrowService.AddBorrowAsync(borrow);
+            }
+            await NotifyAsync("Books borrowed successfully.");
+        }
+        else
+        {
+            foreach (var book in SelectedBooks)
+            {
+                var borrowRecord = await BorrowService.GetBorrowRecordByBookNumAsync(book.BookNum);
+                if (borrowRecord != null)
+                {
+                    await BorrowService.ReturnBookAsync(borrowRecord.BorrowID);
+                }
+                else
+                {
+                    await NotifyAsync($"No borrow record found for {book.Title}.");
+                }
+            }
+            await NotifyAsync("Books returned successfully.");
+        }
+
+        SelectedBooks.Clear();
     }
 
     private void SetBorrowingAction(ChangeEventArgs e)
     {
-        Action = e.Value.ToString();
+        IsBorrowing = e.Value.ToString() == "Ausleihe";
+    }
+
+    private Task NotifyAsync(string message)
+    {
+        Console.WriteLine(message);
+        return Task.CompletedTask;
     }
 }
