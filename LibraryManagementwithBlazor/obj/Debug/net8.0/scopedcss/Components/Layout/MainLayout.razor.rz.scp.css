@@ -3,12 +3,8 @@
     display: flex;
     flex-direction: column;
 }
+/*@import url('https://fonts.googleapis.com/css2?family=Work+Sans');*/
 
-main[b-vgma9vhg1j] {
-    flex: 1;
-
-}
-/*
 @font-face {
     font-family: "Inter";
     src: url("/fonts/inter/Inter-Regular.woff2") format("woff2"), url("/fonts/inter/Inter-Regular.woff") format("woff");
@@ -23,7 +19,7 @@ main[b-vgma9vhg1j] {
     font-style: normal;
 }
 
-:root {
+:root[b-vgma9vhg1j] {
     font-family: "Inter", sans-serif;
 }*/
 

@@ -1,16 +1,29 @@
 ﻿@page "/students"
 @using Microsoft.EntityFrameworkCore
-@using Microsoft.AspNetCore.Components.QuickGrid
 @using LibraryManagementwithBlazor.Data
 @implements IAsyncDisposable
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 
 <h3 class="text-lg font-bold text-center mb-4">Student Index</h3>
 
-<div class="flex justify-end mb-4">
-    <a href="students/create" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+<div class="flex justify-between items-center mb-4">
+    <!-- Create New Button -->
+    <a href="students/create" style="margin-right: 1rem;" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
         Create New
     </a>
+
+    <!-- Search Box -->
+    <form action="/students" method="get" class="flex items-center border border-gray-300 rounded-lg overflow-hidden shadow-sm">
+        <input type="text"
+               name="titleFilter"
+               placeholder="Search..."
+               class="px-4 py-2 text-gray-700 focus:outline-none"
+               style="min-width: 200px;" />
+        <button type="submit"
+                class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold">
+            Search
+        </button>
+    </form>
 </div>
 
 <div class="overflow-x-auto">
@@ -23,9 +36,9 @@
             </tr>
         </thead>
         <tbody>
-            @if (context.TblStudent != null)
+            @if (filteredStudents != null && filteredStudents.Any())
             {
-                @foreach (var student in context.TblStudent)
+                @foreach (var student in filteredStudents)
                 {
                     <tr class="hover:bg-gray-100">
                         <td class="border border-gray-300 px-4 py-2">@student.FirstName</td>
@@ -50,11 +63,37 @@
 
 @code {
     private LibraryManagementwithBlazorContext context = default!;
+    private List<Student> filteredStudents = new List<Student>();
 
-    protected override void OnInitialized()
+    [Parameter]
+    [SupplyParameterFromQuery]
+    public string? TitleFilter { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
         context = DbFactory.CreateDbContext();
+        await LoadStudents();
     }
 
-    public async ValueTask DisposeAsync() => await context.DisposeAsync();
+    private async Task LoadStudents()
+    {
+        var allStudents = await context.TblStudent.ToListAsync();
+
+        if (!string.IsNullOrWhiteSpace(TitleFilter))
+        {
+            filteredStudents = allStudents
+                .Where(s => s.FirstName.Contains(TitleFilter, StringComparison.OrdinalIgnoreCase) ||
+                            s.LastName.Contains(TitleFilter, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+        else
+        {
+            filteredStudents = allStudents;
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        await context.DisposeAsync();
+    }
 }
