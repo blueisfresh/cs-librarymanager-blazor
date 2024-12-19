@@ -5,30 +5,24 @@
 @implements IAsyncDisposable
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 
-<div class="p-6 max-w-5xl mx-auto bg-white rounded-xl shadow-md space-y-6">
-    <h3 class="text-xl font-bold text-center">Studentenverwaltung</h3>
+<PageTitle>Student Index</PageTitle>
 
-    <p class="text-center">
-        <a href="students/create" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Create New</a>
-    </p>
+<h1>Student Index</h1>
 
-    <div class="overflow-x-auto">
-        <QuickGrid Class="w-full border-collapse border border-gray-300 rounded-md" Items="context.TblStudent">
-            <PropertyColumn Property="student => student.FirstName" Title="First Name" />
-            <PropertyColumn Property="student => student.LastName" Title="Last Name" />
+<p>
+    <a href="students/create">Create New</a>
+</p>
 
-            <TemplateColumn Context="student" Title="Actions">
-                <div class="flex space-x-2">
-                    <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="text-blue-500 hover:underline">Edit</a>
-                    <span>|</span>
-                    <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="text-green-500 hover:underline">Details</a>
-                    <span>|</span>
-                    <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="text-red-500 hover:underline">Delete</a>
-                </div>
-            </TemplateColumn>
-        </QuickGrid>
-    </div>
-</div>
+<QuickGrid Class="table" Items="context.TblStudent">
+    <PropertyColumn Property="student => student.FirstName" Title="First Name" />
+    <PropertyColumn Property="student => student.LastName" Title="Last Name" />
+
+    <TemplateColumn Context="student" Title="Actions">
+        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")">Edit</a> |
+        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")">Details</a> |
+        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")">Delete</a>
+    </TemplateColumn>
+</QuickGrid>
 
 @code {
     private LibraryManagementwithBlazorContext context = default!;

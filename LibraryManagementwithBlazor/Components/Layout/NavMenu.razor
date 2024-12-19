@@ -1,34 +1,22 @@
-﻿
+﻿<nav class="h-[94vh] bg-gray-50 text-gray-700 flex flex-col rounded-lg shadow-lg m-4 px-4 py-6 space-y-6">
+    @foreach (var navItem in navItems)
+    {
+        <a href="@navItem.Key" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
+            <img src="@navItem.Value.Icon" class="w-6 h-6" alt="@navItem.Value.Name Icon" />
+            <span>@navItem.Value.Name</span>
+        </a>
+    }
+</nav>
 
-
-
-        <nav class="flex-1 px-4 py-6 space-y-6">
-            <a href="/" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources/home.png" class="w-6 h-6" alt="Home Icon" />
-                <span>Home</span>
-            </a>
-            <a href="books" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources/books.png" class="w-6 h-6" alt="Books Icon" />
-                <span>Books</span>
-            </a>
-            <a href="students" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources/students.png" class="w-6 h-6" alt="Students Icon" />
-                <span>Students</span>
-            </a>
-            <a href="borrows" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources\borrowed_books.png" class="w-6 h-6" alt="Borrows Icon" />
-                <span>Borrowed</span>
-            </a>
-            <a href="statistics" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources\statistics.png" class="w-6 h-6" alt="Statistics Icon" />
-                <span>Statistics</span>
-            </a>
-            <a href="importexport" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources\import_export.png" class="w-6 h-6" alt="Import & Export Icon" />
-                <span>Import & Export</span>
-            </a>
-            <a href="borrowreturn" class="flex items-center space-x-4 text-sm text-gray-700 hover:text-black">
-                <img src="Resources\borrow_return.png" class="w-6 h-6" alt="Borrow or Return Icon" />
-                <span>Borrow or Return</span>
-            </a>
-        </nav>
+@code {
+    private readonly Dictionary<string, (string Name, string Icon)> navItems = new()
+    {
+        { "/", ("Home", "Resources/home.png") },
+        { "books", ("Books", "Resources/books.png") },
+        { "students", ("Students", "Resources/students.png") },
+        { "borrowedbooks", ("Borrowed", "Resources/borrowed_books.png") },
+        { "statistics", ("Statistics", "Resources/statistics.png") },
+        { "importexport", ("Import & Export", "Resources/import_export.png") },
+        { "borrowreturn", ("Borrow or Return", "Resources/borrow_return.png") }
+    };
+}

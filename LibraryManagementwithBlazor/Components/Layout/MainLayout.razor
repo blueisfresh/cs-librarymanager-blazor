@@ -5,22 +5,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
-
 <div class="bg-white h-screen flex">
-    <div class="h-[94vh] bg-gray-100 text-gray-700 flex flex-col rounded-xl shadow-md m-4">
+    <!-- Sidebar -->
+
         <NavMenu />
 
-    </div>
-    <div class="flex-col m-4">
 
-    <main>
-        @* Header  *@
+    <!-- Main Content -->
+    <div class="relative flex-1 flex items-start justify-center mt-4">
+        <main class="w-full max-w-lg">
+            @* Header *@
+            <header class="absolute top-4 w-full bg-white rounded-lg shadow-lg p-6 text-center mb-4">
+                <h1 class="text-3xl font-extrabold text-gray-800">Library Manager</h1>
+            </header>
 
-        <article class="justify-content-center">
-            @Body
-        </article>
-    </main>
+            <!-- Pages -->
+            <article class="absolute top-4 p-6 bg-white rounded-lg shadow-lg">
+                @Body
+            </article>
+        </main>
     </div>
+
 </div>
 
 <div id="blazor-error-ui">
