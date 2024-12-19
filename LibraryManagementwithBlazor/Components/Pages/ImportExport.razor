@@ -6,6 +6,9 @@
 @using System.Diagnostics
 @inject IJSRuntime JSRuntime
 @rendermode InteractiveServer
+@using System.Text;
+@using Newtonsoft.Json
+@inject MyFileService MyFileService
 
 @* <div>
     <h4>Wähle eine Option:</h4>
@@ -61,10 +64,15 @@
             }
         </div>
         <div class="flex items-center space-x-4">
-            <span>Datei auswählen:</span>
-            <input type="text" readonly class="w-full p-2 border border-gray-300 rounded-md" placeholder="Keine Datei ausgewählt" />
-            <button class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Durchsuchen</button>
+            <label class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 cursor-pointer">
+                Durchsuchen
+                <InputFile OnChange="FileSelected" class="hidden" />
+            </label>
+            <input type="text" readonly class="w-full p-2 border border-gray-300 rounded-md" value="@fileName" placeholder="Keine Datei ausgewählt" />
         </div>
+
+
+
         <div class="flex items-center space-x-2">
             <span>Datei Format:</span>
             <span class="font-medium">JSON</span>
@@ -83,6 +91,8 @@
 </div>
 
 @code {
+    private ElementReference fileInput;
+    private string fileName = string.Empty;
 
     private string? SelectedOption;
 
@@ -90,6 +100,8 @@
     {
         SelectedOption = e.Value?.ToString();
     }
+
+    private IBrowserFile? SelectedFile;
 
     private bool IsSelected(string option)
     {
@@ -121,6 +133,30 @@
     {
         SelectedImportOption = args.Value.ToString();
     }
+
+    private async Task OpenDialog()
+    {
+        // Use JS interop to trigger the file dialog
+        await JSRuntime.InvokeVoidAsync("openFileDialog");
+    }
+
+
+    private async Task FileSelected(InputFileChangeEventArgs e)
+    {
+        SelectedFile = e.File; // Get the selected file
+        if (SelectedFile != null)
+        {
+            fileName = SelectedFile.Name;
+            using var stream = SelectedFile.OpenReadStream();
+            // Save or process the file
+            await MyFileService.SaveFileAsync(SelectedFile.Name, stream);
+        }
+        else
+        {
+            Debug.WriteLine("No file selected or invalid file.");
+        }
+    }
+
 
     private async Task ExportData()
     {
@@ -161,16 +197,53 @@
             return;
         }
 
-        if (SelectedImportOption == "1") // Bücher
+        if (SelectedFile == null)
         {
-            Console.WriteLine("Importieren von Büchern.");
-            // await BookService.ImportBooksAsync("books.json");
+            Debug.WriteLine("Please select a file before importing.");
+            return;
         }
-        else if (SelectedImportOption == "2") // Schüler
+
+        try
         {
-            Console.WriteLine("Importieren von Schülern.");
-            // await StudentService.ImportStudentsAsync("students.json");
+            using var stream = SelectedFile.OpenReadStream();
+            using var reader = new StreamReader(stream, Encoding.UTF8);
+            var jsonContent = await reader.ReadToEndAsync();
+
+            if (SelectedImportOption == "1") // Books
+            {
+                var books = System.Text.Json.JsonSerializer.Deserialize<List<Book>>(jsonContent);
+                if (books != null)
+                {
+                    foreach (var book in books)
+                    {
+                        // Add each book using the corresponding service
+                        await BookService.AddBookAsync(book);
+                    }
+                    Debug.WriteLine("Books imported successfully.");
+                }
+                // await BookService.ImportBooksAsync(books);
+            }
+            else if (SelectedImportOption == "2") // Students
+            {
+                var students = System.Text.Json.JsonSerializer.Deserialize<List<Student>>(jsonContent);
+                if (students != null)
+                {
+                    foreach (var student in students)
+                    {
+                        // Add each student using the corresponding service
+                        await StudentService.AddStudentAsync(student);
+                    }
+                    Debug.WriteLine("Students imported successfully.");
+                }
+                // await StudentService.ImportStudentsAsync(students);
+            }
+
         }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error during file import: {ex.Message}");
+        }
+
     }
 
     public class RadioButton

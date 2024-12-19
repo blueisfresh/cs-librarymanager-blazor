@@ -7,3 +7,7 @@
     link.click();
     document.body.removeChild(link);
 }
+
+function openFileDialog() {
+    document.getElementById('fileInput').click();
+}

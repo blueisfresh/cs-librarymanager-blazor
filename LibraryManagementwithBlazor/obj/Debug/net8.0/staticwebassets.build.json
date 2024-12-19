@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "yzB69JfC/IPrteGw5fCx9D5itmyFB3ZYaxJ4dB8J3Y8=",
+  "Hash": "h10H6Yy6uiWjVNLcyLA1TPj+HzPMOiPdLWBtAJUXozk=",
   "Source": "LibraryManagementwithBlazor",
   "BasePath": "_content/LibraryManagementwithBlazor",
   "Mode": "Default",
@@ -1554,6 +1554,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\import.png"
+    },
+    {
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import_export.png",
+      "SourceId": "LibraryManagementwithBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementwithBlazor",
+      "RelativePath": "Resources/import_export.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\import_export.png"
     },
     {
       "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\statistics.png",

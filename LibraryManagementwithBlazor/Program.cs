@@ -11,6 +11,8 @@ builder.Services.AddDbContextFactory<LibraryManagementwithBlazorContext>(options
 builder.Services.AddScoped<BookService>();
 builder.Services.AddScoped<StudentService>();
 builder.Services.AddScoped<BorrowService>();
+builder.Services.AddScoped<MyFileService>();
+
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
