@@ -3,37 +3,40 @@
 @inject BookService BookService
 @inject StudentService StudentService
 @using LibraryManagementwithBlazor.Services
+@rendermode InteractiveServer
 
 <div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-6">
     <h3 class="text-xl font-bold text-center">Ausleihe / Rückgabe</h3>
 
     <div class="flex items-center space-x-4">
         <label class="font-medium">Aktion:</label>
-        <input type="radio" id="borrow" name="action" value="Ausleihe" />
+        <input type="radio" id="borrow" name="action" value="Ausleihe" @onchange="SetBorrowingAction" />
         <label for="borrow">Ausleihe</label>
-        <input type="radio" id="return" name="action" value="Rückgabe" />
+        <input type="radio" id="return" name="action" value="Rückgabe" @onchange="SetBorrowingAction" />
         <label for="return">Rückgabe</label>
     </div>
 
     <div class="space-y-2">
         <label for="studentId" class="block font-medium">Schülerausweisnummer:</label>
-        <input type="text" id="studentId" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter Student ID" />
+        <input type="text" id="studentId" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Enter Student ID" @bind="StudentId" />
     </div>
 
     <div class="space-y-2">
         <h4 class="font-semibold">Bücher hinzufügen:</h4>
         <div class="flex items-center space-x-4">
             <label for="bookNumber" class="font-medium">Buchnummer:</label>
-            <input type="text" id="bookNumber" class="w-24 p-2 border border-gray-300 rounded-md" placeholder="Book Number" />
-            <button class="px-4 py-2 bg-blue-500 text-white rounded-md">Add</button>
+            <input type="text" id="bookNumber" class="w-24 p-2 border border-gray-300 rounded-md" placeholder="Book Number" @bind="BookNumber" />
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-md" @onclick="AddBookToList">Add</button>
         </div>
     </div>
 
     <div class="space-y-2">
         <h4 class="font-semibold">Ausgewählte Bücher:</h4>
         <ul class="space-y-1">
-            <!-- Example item, replace with actual data -->
-            <li class="p-2 bg-gray-100 rounded-md">Book Title</li>
+            @foreach (var book in SelectedBooks)
+            {
+                <li class="p-2 bg-gray-100 rounded-md">@book</li>
+            }
         </ul>
     </div>
 
@@ -41,3 +44,25 @@
         <button class="px-6 py-2 bg-green-500 text-white rounded-md">Bestätigen</button>
     </div>
 </div>
+
+@code {
+    private string StudentId { get; set; } = string.Empty;
+    private string BookNumber { get; set; } = string.Empty;
+    private List<string> SelectedBooks { get; set; } = new List<string>();
+    private string Action { get; set; } = string.Empty;
+
+    private void AddBookToList()
+    {
+        if (!string.IsNullOrWhiteSpace(BookNumber))
+        {
+            SelectedBooks.Add(BookNumber);
+            BookNumber = string.Empty; // Clear the input field
+            StateHasChanged(); // Force UI update
+        }
+    }
+
+    private void SetBorrowingAction(ChangeEventArgs e)
+    {
+        Action = e.Value.ToString();
+    }
+}
