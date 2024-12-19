@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VIlFqDx6poNpTbScdjcIIa1/h8KUkAn4CeKBinGCIe8d35xjrf+nP74btEIkvtsVmEE/D24JxCddfsTxALOOqQ==",
+  "dgSpecHash": "87r4lJMa6AFLRi5K69SAdunxV7427nITWmlF0IMSowN0uNWDdd6B9ZRZpF7HZmPl6/e2IKXQIpp/vpDzxs5D+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
+  "projectFilePath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elias\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\elias\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
