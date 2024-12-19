@@ -1200,6 +1200,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\borrow_return.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\export.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>LibraryManagementwithBlazor</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/LibraryManagementwithBlazor</BasePath>
+      <RelativePath>Resources/export.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\export.png))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\home.png))">
       <SourceType>Package</SourceType>
       <SourceId>LibraryManagementwithBlazor</SourceId>
@@ -1216,12 +1232,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\home.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\import_export.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\import.png))">
       <SourceType>Package</SourceType>
       <SourceId>LibraryManagementwithBlazor</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/LibraryManagementwithBlazor</BasePath>
-      <RelativePath>Resources/import_export.png</RelativePath>
+      <RelativePath>Resources/import.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1230,7 +1246,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\import_export.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\import.png))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\Resources\statistics.png))">
       <SourceType>Package</SourceType>
