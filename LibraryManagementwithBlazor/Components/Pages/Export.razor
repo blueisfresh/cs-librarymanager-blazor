@@ -1,0 +1,154 @@
+﻿@page "/export"
+@inject BorrowService BorrowService
+@inject StudentService StudentService
+@inject BookService BookService
+@using LibraryManagementwithBlazor.Services
+@inject IJSRuntime JSRuntime
+
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-6">
+    <h3 class="text-xl font-bold text-center">Import / Export von Daten</h3>
+
+    <!-- Export Section -->
+    <div class="space-y-4">
+        <h4 class="font-semibold">Exportieren</h4>
+        <div class="space-y-2">
+            @foreach (var radiobtn in ExportRadioButtons)
+            {
+                <div>
+                    <input type="radio" name="exportOption" id="@radiobtn.Id" value="@radiobtn.Value.ToString()"
+                           @onchange="ExportSelection"
+                           checked="@(SelectedExportOption == radiobtn.Value.ToString())" />
+                    <label for="@radiobtn.Id">@radiobtn.Text</label>
+                </div>
+            }
+
+        </div>
+        <div class="flex items-center space-x-2">
+            <span>Datei Format:</span>
+            <span class="font-medium">JSON</span>
+        </div>
+        <div class="text-center">
+            <button class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600" @onclick="ExportData">Exportieren</button>
+        </div>
+    </div>
+
+    <!-- Import Section -->
+    <div class="space-y-4">
+        <h4 class="font-semibold">Importieren</h4>
+        <div class="space-y-2">
+            @foreach (var radiobtn in ImportRadioButtons)
+            {
+                <div>
+                    <input type="radio" name="importOption" id="@radiobtn.Id" value="@radiobtn.Value" @onchange="ImportSelection"
+                           checked="@(string.Equals(SelectedImportOption, radiobtn.Value.ToString(), StringComparison.OrdinalIgnoreCase))" />
+                    <label for="@radiobtn.Id">@radiobtn.Text</label>
+                </div>
+            }
+        </div>
+        <div class="flex items-center space-x-4">
+            <span>Datei auswählen:</span>
+            <input type="text" readonly class="w-full p-2 border border-gray-300 rounded-md" placeholder="Keine Datei ausgewählt" />
+            <button class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">Durchsuchen</button>
+        </div>
+        <div class="flex items-center space-x-2">
+            <span>Datei Format:</span>
+            <span class="font-medium">JSON</span>
+        </div>
+        <div class="text-center">
+            <button class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600" @onclick="ImportData">Importieren</button>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="text-center">
+        <button class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
+            Zurück zum Hauptmenü
+        </button>
+    </div>
+</div>
+
+@code {
+    private string SelectedExportOption { get; set; } = string.Empty;
+    private string SelectedImportOption { get; set; } = string.Empty;
+
+    public RadioButton[] ExportRadioButtons = new[]
+    {
+        new RadioButton { Id = "exportBooks", Value = 1, Text = "Bücher" },
+        new RadioButton { Id = "exportStudents", Value = 2, Text = "Schüler" }
+    };
+
+    public RadioButton[] ImportRadioButtons = new[]
+    {
+        new RadioButton { Id = "importBooks", Value = 1, Text = "Bücher" },
+        new RadioButton { Id = "importStudents", Value = 2, Text = "Schüler" }
+    };
+
+    public void ExportSelection(ChangeEventArgs args)
+    {
+        Console.WriteLine($"Export option selected: {args.Value}");
+        SelectedExportOption = args.Value?.ToString();
+    }
+
+    public void ImportSelection(ChangeEventArgs args)
+    {
+        SelectedImportOption = args.Value.ToString();
+    }
+
+    private async Task ExportData()
+    {
+        if (string.IsNullOrEmpty(SelectedExportOption))
+        {
+            Console.WriteLine("Bitte wählen Sie eine Exportoption aus.");
+            return;
+        }
+
+        // Open SaveDialog
+
+        if (SelectedExportOption == "1") // Bücher
+        {
+            var books = await BookService.GetAllBooksAsync(); // Fetch all books from the database
+            string jsonData = System.Text.Json.JsonSerializer.Serialize(books);
+            await DownloadFileAsync("books.json", jsonData);
+            Console.WriteLine("Exportieren von Büchern abgeschlossen.");
+        }
+        else if (SelectedExportOption == "2") // Schüler
+        {
+            Console.WriteLine("Exportieren von Schülern.");
+            // await StudentService.ExportStudentsAsync("students.json");
+        }
+    }
+
+    private async Task DownloadFileAsync(string fileName, string content)
+    {
+        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, content);
+    }
+
+
+    private async Task ImportData()
+    {
+        if (string.IsNullOrEmpty(SelectedImportOption))
+        {
+            Console.WriteLine("Bitte wählen Sie eine Importoption aus.");
+            return;
+        }
+
+        if (SelectedImportOption == "1") // Bücher
+        {
+            Console.WriteLine("Importieren von Büchern.");
+            // await BookService.ImportBooksAsync("books.json");
+        }
+        else if (SelectedImportOption == "2") // Schüler
+        {
+            Console.WriteLine("Importieren von Schülern.");
+            // await StudentService.ImportStudentsAsync("students.json");
+        }
+    }
+
+    public class RadioButton
+    {
+        public string Id { get; set; }
+        public int Value { get; set; }
+        public string Text { get; set; }
+        public bool Selected { get; set; } = false;
+    }
+}

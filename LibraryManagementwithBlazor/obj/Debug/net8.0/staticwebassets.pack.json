@@ -17,8 +17,16 @@
       "PackagePath": "staticwebassets\\Resources\\borrowed_books.png"
     },
     {
+      "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\export.png",
+      "PackagePath": "staticwebassets\\Resources\\export.png"
+    },
+    {
       "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\home.png",
       "PackagePath": "staticwebassets\\Resources\\home.png"
+    },
+    {
+      "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import.png",
+      "PackagePath": "staticwebassets\\Resources\\import.png"
     },
     {
       "Id": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import_export.png",

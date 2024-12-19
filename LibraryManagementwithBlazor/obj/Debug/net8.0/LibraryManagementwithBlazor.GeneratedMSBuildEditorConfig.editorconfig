@@ -82,6 +82,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Export.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFeHBvcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/elias/Desktop/dritte Blockwoche/librarymanagementwithblazor/LibraryManagementwithBlazor/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

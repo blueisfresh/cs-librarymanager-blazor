@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MahHVGML1I9k/nXJfqmq4AHzfqEV5KR9NN33nHA7QUY=",
+  "Hash": "h10H6Yy6uiWjVNLcyLA1TPj+HzPMOiPdLWBtAJUXozk=",
   "Source": "LibraryManagementwithBlazor",
   "BasePath": "_content/LibraryManagementwithBlazor",
   "Mode": "Default",
@@ -1499,6 +1499,25 @@
       "OriginalItemSpec": "wwwroot\\Resources\\borrowed_books.png"
     },
     {
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\export.png",
+      "SourceId": "LibraryManagementwithBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementwithBlazor",
+      "RelativePath": "Resources/export.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\export.png"
+    },
+    {
       "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\home.png",
       "SourceId": "LibraryManagementwithBlazor",
       "SourceType": "Discovered",
@@ -1516,6 +1535,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Resources\\home.png"
+    },
+    {
+      "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import.png",
+      "SourceId": "LibraryManagementwithBlazor",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\",
+      "BasePath": "_content/LibraryManagementwithBlazor",
+      "RelativePath": "Resources/import.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Resources\\import.png"
     },
     {
       "Identity": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\Resources\\import_export.png",

@@ -3,7 +3,22 @@
 @inject StudentService StudentService
 @inject BookService BookService
 @using LibraryManagementwithBlazor.Services
+@using System.Diagnostics
 @inject IJSRuntime JSRuntime
+@rendermode InteractiveServer
+
+@* <div>
+    <h4>Wähle eine Option:</h4>
+    <label>
+        <input type="radio" name="choice" value="Option1" @onchange="OnSelectionChanged" checked="@IsSelected("Option1")" />
+        Option 1
+    </label>
+    <br />
+    <label>
+        <input type="radio" name="choice" value="Option2" @onchange="OnSelectionChanged" checked="@IsSelected("Option2")" />
+        Option 2
+    </label>
+</div> *@
 
 <div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-6">
     <h3 class="text-xl font-bold text-center">Import / Export von Daten</h3>
@@ -68,6 +83,19 @@
 </div>
 
 @code {
+
+    private string? SelectedOption;
+
+    private void OnSelectionChanged(ChangeEventArgs e)
+    {
+        SelectedOption = e.Value?.ToString();
+    }
+
+    private bool IsSelected(string option)
+    {
+        return SelectedOption == option;
+    }
+
     private string SelectedExportOption { get; set; } = string.Empty;
     private string SelectedImportOption { get; set; } = string.Empty;
 
@@ -85,7 +113,7 @@
 
     public void ExportSelection(ChangeEventArgs args)
     {
-        Console.WriteLine($"Export option selected: {args.Value}");
+        Debug.WriteLine($"Export option selected: {args.Value}");
         SelectedExportOption = args.Value?.ToString();
     }
 
@@ -98,7 +126,7 @@
     {
         if (string.IsNullOrEmpty(SelectedExportOption))
         {
-            Console.WriteLine("Bitte wählen Sie eine Exportoption aus.");
+            Debug.WriteLine("Bitte wählen Sie eine Exportoption aus.");
             return;
         }
 
@@ -109,12 +137,13 @@
             var books = await BookService.GetAllBooksAsync(); // Fetch all books from the database
             string jsonData = System.Text.Json.JsonSerializer.Serialize(books);
             await DownloadFileAsync("books.json", jsonData);
-            Console.WriteLine("Exportieren von Büchern abgeschlossen.");
         }
         else if (SelectedExportOption == "2") // Schüler
         {
-            Console.WriteLine("Exportieren von Schülern.");
-            // await StudentService.ExportStudentsAsync("students.json");
+            var student = await StudentService.GetAllStudentsAsync();
+            string jsonData = System.Text.Json.JsonSerializer.Serialize(student);
+            await DownloadFileAsync("student.json", jsonData);
+            Debug.WriteLine("Exportieren von Schülern.");
         }
     }
 
