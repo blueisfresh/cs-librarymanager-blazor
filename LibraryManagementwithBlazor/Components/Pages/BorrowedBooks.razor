@@ -2,36 +2,40 @@
 @inject BorrowService BorrowService
 @using LibraryManagementwithBlazor.Services
 
-<h3>Borrowed Books</h3>
+<h3 class="text-lg font-bold text-center mb-4">Borrowed Books</h3>
 
-@if (borrowedBooks == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <table class="table">
+<div class="overflow-x-auto">
+    <table class="w-full border-collapse border border-gray-300 rounded-lg">
         <thead>
-            <tr>
-                <th>Book Number</th>
-                <th>Student ID</th>
-                <th>Borrow Date</th>
-                <th>Due Date</th>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2 text-left">Book Number</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Student ID</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Borrow Date</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Due Date</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var book in borrowedBooks)
+            @if (borrowedBooks != null && borrowedBooks.Any())
+            {
+                @foreach (var book in borrowedBooks)
+                {
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-300 px-4 py-2">@book.BookBookNum</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.StudentLibraryCardNum</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.BorrowDate</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.DueDate</td>
+                    </tr>
+                }
+            }
+            else
             {
                 <tr>
-                    <td>@book.BookBookNum</td>
-                    <td>@book.StudentLibraryCardNum</td>
-                    <td>@book.BorrowDate</td>
-                    <td>@book.DueDate</td>
+                    <td colspan="4" class="text-center text-gray-500 py-4">No borrowed books available</td>
                 </tr>
             }
         </tbody>
     </table>
-}
+</div>
 
 @code {
     private List<Borrow> borrowedBooks;

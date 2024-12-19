@@ -1,36 +1,37 @@
 ﻿@page "/statistics"
 @inject BorrowService BorrowService
 @using LibraryManagementwithBlazor.Services
-<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-6">
-    <h3 class="text-xl font-bold text-center">Statistics</h3>
 
-    @if (mostBorrowedBooks == null)
-    {
-        <p class="text-center text-gray-500">Loading...</p>
-    }
-    else
-    {
-        <div class="overflow-x-auto">
-            <table class="w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border border-gray-300 px-4 py-2 text-left">Book Number</th>
-                        <th class="border border-gray-300 px-4 py-2 text-left">Borrow Count</th>
+
+<h3 class="text-lg font-bold text-center mb-4">Statistics</h3>
+
+@if (mostBorrowedBooks == null)
+{
+    <p class="text-center text-gray-500">Loading...</p>
+}
+else
+{
+    <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300 rounded-lg">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="border border-gray-300 px-4 py-2 text-left">Book Number</th>
+                    <th class="border border-gray-300 px-4 py-2 text-left">Borrow Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in mostBorrowedBooks)
+                {
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-300 px-4 py-2">@item.Key</td>
+                        <td class="border border-gray-300 px-4 py-2">@item.Value</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in mostBorrowedBooks)
-                    {
-                        <tr class="hover:bg-gray-100">
-                            <td class="border border-gray-300 px-4 py-2">@item.Key</td>
-                            <td class="border border-gray-300 px-4 py-2">@item.Value</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    }
-</div>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 
 @code {
     private List<KeyValuePair<string, int>> mostBorrowedBooks;

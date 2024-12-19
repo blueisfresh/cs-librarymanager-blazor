@@ -536,3 +536,4 @@ C:\Users\elias\Desktop\dritte Blockwoche\LibraryManagementwithBlazor\LibraryMana
 C:\Users\elias\Desktop\dritte Blockwoche\LibraryManagementwithBlazor\LibraryManagementwithBlazor\obj\Debug\net8.0\ref\LibraryManagementwithBlazor.dll
 C:\Users\elias\Desktop\dritte Blockwoche\librarymanagementwithblazor\LibraryManagementwithBlazor\bin\Debug\net8.0\package-lock.json
 C:\Users\elias\Desktop\dritte Blockwoche\librarymanagementwithblazor\LibraryManagementwithBlazor\bin\Debug\net8.0\package.json
+C:\Users\elias\Desktop\dritte Blockwoche\librarymanagementwithblazor\LibraryManagementwithBlazor\bin\Debug\net8.0\libman.json

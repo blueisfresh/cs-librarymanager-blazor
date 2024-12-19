@@ -5,24 +5,48 @@
 @implements IAsyncDisposable
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 
-<PageTitle>Student Index</PageTitle>
+<h3 class="text-lg font-bold text-center mb-4">Student Index</h3>
 
-<h1>Student Index</h1>
+<div class="flex justify-end mb-4">
+    <a href="students/create" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        Create New
+    </a>
+</div>
 
-<p>
-    <a href="students/create">Create New</a>
-</p>
-
-<QuickGrid Class="table" Items="context.TblStudent">
-    <PropertyColumn Property="student => student.FirstName" Title="First Name" />
-    <PropertyColumn Property="student => student.LastName" Title="Last Name" />
-
-    <TemplateColumn Context="student" Title="Actions">
-        <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")">Edit</a> |
-        <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")">Details</a> |
-        <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")">Delete</a>
-    </TemplateColumn>
-</QuickGrid>
+<div class="overflow-x-auto">
+    <table class="w-full border-collapse border border-gray-300 rounded-lg">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2 text-left">First Name</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Last Name</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (context.TblStudent != null)
+            {
+                @foreach (var student in context.TblStudent)
+                {
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-300 px-4 py-2">@student.FirstName</td>
+                        <td class="border border-gray-300 px-4 py-2">@student.LastName</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="text-blue-500 hover:underline">Edit</a> |
+                            <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="text-green-500 hover:underline">Details</a> |
+                            <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="text-red-500 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center text-gray-500 py-4">No students available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
     private LibraryManagementwithBlazorContext context = default!;

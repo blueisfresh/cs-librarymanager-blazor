@@ -1,15 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    mode: 'jit',
-    content: [
-        './**/*.razor', // Include Razor files
-        './wwwroot/**/*.html', // Include HTML files
-    ],
+    content: ["./**/*.razor", "./wwwroot/**/*.html"],
     theme: {
-        extend: {}, // Extend default theme here
+        extend: {
+            fontFamily: {
+                inter: ['Inter', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 };
+
 
 
 

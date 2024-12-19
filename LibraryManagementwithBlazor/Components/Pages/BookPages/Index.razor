@@ -5,33 +5,60 @@
 @implements IAsyncDisposable
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 
-<PageTitle>Index</PageTitle>
+<h3 class="text-lg font-bold text-center mb-4">Book Index</h3>
 
-<h1>Index</h1>
+<div class="flex justify-end mb-4">
+    <a href="books/create" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+        Create New
+    </a>
+</div>
 
-<p>
-    <a href="books/create">Create New</a>
-</p>
-
-<QuickGrid Class="table" Items="context.TblBook">
-    <PropertyColumn Property="book => book.BookNum" />
-    <PropertyColumn Property="book => book.Title" />
-    <PropertyColumn Property="book => book.Author" />
-    <PropertyColumn Property="book => book.Publisher" />
-    <PropertyColumn Property="book => book.ISBN" />
-    <PropertyColumn Property="book => book.PublicationPlace" />
-    <PropertyColumn Property="book => book.PublicationDate" />
-
-    <TemplateColumn Context="book">
-        <a href="@($"books/edit?booknum={book.BookNum}")">Edit</a> |
-        <a href="@($"books/details?booknum={book.BookNum}")">Details</a> |
-        <a href="@($"books/delete?booknum={book.BookNum}")">Delete</a>
-    </TemplateColumn>
-</QuickGrid>
+<div class="overflow-x-auto">
+    <table class="w-full border-collapse border border-gray-300 rounded-lg">
+        <thead>
+            <tr class="bg-gray-200">
+                <th class="border border-gray-300 px-4 py-2 text-left">Book Number</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Title</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Author</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Publisher</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">ISBN</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Publication Place</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Publication Date</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (context.TblBook != null)
+            {
+                @foreach (var book in context.TblBook)
+                {
+                    <tr class="hover:bg-gray-100">
+                        <td class="border border-gray-300 px-4 py-2">@book.BookNum</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.Title</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.Author</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.Publisher</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.ISBN</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.PublicationPlace</td>
+                        <td class="border border-gray-300 px-4 py-2">@book.PublicationDate</td>
+                        <td class="border border-gray-300 px-4 py-2">
+                            <a href="@($"books/edit?booknum={book.BookNum}")" class="text-blue-500 hover:underline">Edit</a> |
+                            <a href="@($"books/details?booknum={book.BookNum}")" class="text-green-500 hover:underline">Details</a> |
+                            <a href="@($"books/delete?booknum={book.BookNum}")" class="text-red-500 hover:underline">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="text-center text-gray-500 py-4">No books available</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 @code {
-    // GetAllBooksAsync
-
     private LibraryManagementwithBlazorContext context = default!;
 
     protected override void OnInitialized()

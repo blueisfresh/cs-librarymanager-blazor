@@ -3,29 +3,25 @@
 <head>
     <link href="css/output.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link href="/css/output.css" rel="stylesheet" />
 </head>
 
 <div class="bg-white h-screen flex">
     <!-- Sidebar -->
-
-        <NavMenu />
-
+    <NavMenu />
 
     <!-- Main Content -->
-    <div class="relative flex-1 flex items-start justify-center mt-4">
-        <main class="w-full max-w-lg">
-            @* Header *@
-            <header class="absolute top-4 w-full bg-white rounded-lg shadow-lg p-6 text-center mb-4">
-                <h1 class="text-3xl font-extrabold text-gray-800">Library Manager</h1>
-            </header>
+    <div class="flex-1 flex flex-col items-center mt-4">
+        <!-- Header -->
+        <header class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 text-center mb-4">
+            <h1 class="text-3xl font-bold text-gray-800">Library Manager</h1>
+        </header>
 
-            <!-- Pages -->
-            <article class="absolute top-4 p-6 bg-white rounded-lg shadow-lg">
-                @Body
-            </article>
-        </main>
+        <!-- Pages -->
+        <article class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
+            @Body
+        </article>
     </div>
-
 </div>
 
 <div id="blazor-error-ui">
