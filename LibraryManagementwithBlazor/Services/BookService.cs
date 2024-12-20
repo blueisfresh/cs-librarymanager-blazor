@@ -53,5 +53,11 @@ namespace LibraryManagementwithBlazor.Services
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> DoesBookNumExistAsync(string bookNum)
+        {
+            return await _context.TblBook.AnyAsync(b => b.BookNum == bookNum);
+        }
+
     }
 }

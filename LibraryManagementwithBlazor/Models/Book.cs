@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 public class Book
 {
     [Key]
-    [Required]
     [StringLength(10)]
     public string BookNum { get; set; } // e.g., "00001-2023"
 

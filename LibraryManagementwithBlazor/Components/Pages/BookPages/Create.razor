@@ -3,6 +3,8 @@
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+@using LibraryManagementwithBlazor.Services
+@inject LibraryManagementwithBlazor.Services.BookService BookService
 
 <PageTitle>Create Book</PageTitle>
 
@@ -15,9 +17,22 @@
         <!-- Book Number -->
         <div class="space-y-1">
             <label for="booknum" class="font-medium">Book Number:</label>
-            <InputText id="booknum" @bind-Value="Book.BookNum" class="w-full border border-gray-300 rounded-md p-2" />
-            <ValidationMessage For="() => Book.BookNum" class="text-red-500 text-sm" />
+            <div class="flex items-center space-x-2">
+                <!-- Book Number Input -->
+                <InputText id="booknum" @bind-Value="Book.BookNum" class="w-full border border-gray-300 rounded-md p-2" disabled="@(IsBookNumChecked)" />
+
+                <!-- Checkbox -->
+                <div class="ml-2">
+                    <input type="checkbox" id="booknum-checkbox" @bind="IsBookNumChecked" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring focus:ring-blue-500" />
+                    <label for="booknum-checkbox" class="ml-1 text-sm">Check</label>
+                </div>
+            </div>
+            @if (!IsBookNumChecked)
+            {
+                <ValidationMessage For="() => Book.BookNum" class="text-red-500 text-sm" />
+            }
         </div>
+
 
         <!-- Title -->
         <div class="space-y-1">
@@ -77,11 +92,31 @@
     [SupplyParameterFromForm]
     private Book Book { get; set; } = new();
 
+    private bool IsBookNumChecked { get; set; } = false; // Tracks checkbox state
+
     private async Task AddBook()
     {
         using var context = DbFactory.CreateDbContext();
-        context.TblBook.Add(Book);
-        await context.SaveChangesAsync();
+
+        if (IsBookNumChecked)
+        {
+            string randomNum;
+            string currentYear = DateTime.Now.Year.ToString();
+            string newBookNum;
+
+            do
+            {
+                // Generate a random number and construct BookNum
+                randomNum = new Random().Next(1, 100000).ToString("D5");
+                newBookNum = $"{randomNum}-{currentYear}";
+            }
+            while (await BookService.DoesBookNumExistAsync(newBookNum)); // Check if it exists
+
+            Book.BookNum = newBookNum;
+        }
+
+        // Add the book to the database
+        await BookService.AddBookAsync(Book); // Use the service to add the book
         NavigationManager.NavigateTo("/books");
     }
 }
