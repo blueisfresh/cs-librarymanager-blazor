@@ -4,68 +4,79 @@
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
 
-<PageTitle>Create</PageTitle>
+<PageTitle>Create Book</PageTitle>
 
-<h1>Create</h1>
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+    <h3 class="text-xl font-bold text-center">Create Book</h3>
+    <EditForm Model="Book" OnValidSubmit="AddBook" class="space-y-4">
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger" />
 
-<h2>Book</h2>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <EditForm method="post" Model="Book" OnValidSubmit="AddBook" FormName="create" Enhance>
-            <DataAnnotationsValidator />
-            <ValidationSummary class="text-danger" role="alert"/>
-            <div class="mb-3">
-                <label for="title" class="form-label">Book Number:</label> 
-                <InputText id="title" @bind-Value="Book.BookNum" class="form-control" /> 
-                <ValidationMessage For="() => Book.BookNum" class="text-danger" /> 
-            </div>      
-            <div class="mb-3">
-                <label for="title" class="form-label">Title:</label> 
-                <InputText id="title" @bind-Value="Book.Title" class="form-control" /> 
-                <ValidationMessage For="() => Book.Title" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="author" class="form-label">Author:</label> 
-                <InputText id="author" @bind-Value="Book.Author" class="form-control" /> 
-                <ValidationMessage For="() => Book.Author" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="publisher" class="form-label">Publisher:</label> 
-                <InputText id="publisher" @bind-Value="Book.Publisher" class="form-control" /> 
-                <ValidationMessage For="() => Book.Publisher" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="isbn" class="form-label">ISBN:</label> 
-                <InputText id="isbn" @bind-Value="Book.ISBN" class="form-control" /> 
-                <ValidationMessage For="() => Book.ISBN" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="publicationplace" class="form-label">PublicationPlace:</label> 
-                <InputText id="publicationplace" @bind-Value="Book.PublicationPlace" class="form-control" /> 
-                <ValidationMessage For="() => Book.PublicationPlace" class="text-danger" /> 
-            </div>        
-            <div class="mb-3">
-                <label for="publicationdate" class="form-label">PublicationDate:</label> 
-                <InputDate id="publicationdate" @bind-Value="Book.PublicationDate" class="form-control" /> 
-                <ValidationMessage For="() => Book.PublicationDate" class="text-danger" /> 
-            </div>        
-            <button type="submit" class="btn btn-primary">Create</button>
-        </EditForm>
-    </div>
-</div>
+        <!-- Book Number -->
+        <div class="space-y-1">
+            <label for="booknum" class="font-medium">Book Number:</label>
+            <InputText id="booknum" @bind-Value="Book.BookNum" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.BookNum" class="text-red-500 text-sm" />
+        </div>
 
-<div>
-    <a href="/books">Back to List</a>
+        <!-- Title -->
+        <div class="space-y-1">
+            <label for="title" class="font-medium">Title:</label>
+            <InputText id="title" @bind-Value="Book.Title" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.Title" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- Author -->
+        <div class="space-y-1">
+            <label for="author" class="font-medium">Author:</label>
+            <InputText id="author" @bind-Value="Book.Author" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.Author" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- Publisher -->
+        <div class="space-y-1">
+            <label for="publisher" class="font-medium">Publisher:</label>
+            <InputText id="publisher" @bind-Value="Book.Publisher" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.Publisher" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- ISBN -->
+        <div class="space-y-1">
+            <label for="isbn" class="font-medium">ISBN:</label>
+            <InputText id="isbn" @bind-Value="Book.ISBN" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.ISBN" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- Publication Place -->
+        <div class="space-y-1">
+            <label for="publicationplace" class="font-medium">Publication Place:</label>
+            <InputText id="publicationplace" @bind-Value="Book.PublicationPlace" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.PublicationPlace" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- Publication Date -->
+        <div class="space-y-1">
+            <label for="publicationdate" class="font-medium">Publication Date:</label>
+            <InputDate id="publicationdate" @bind-Value="Book.PublicationDate" class="w-full border border-gray-300 rounded-md p-2" />
+            <ValidationMessage For="() => Book.PublicationDate" class="text-red-500 text-sm" />
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex justify-center space-x-4 mt-4">
+            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                Create
+            </button>
+            <a href="/books" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                Back to List
+            </a>
+        </div>
+    </EditForm>
 </div>
 
 @code {
-    // AddBookAsync
-
     [SupplyParameterFromForm]
     private Book Book { get; set; } = new();
 
-    // To protect from overposting attacks, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task AddBook()
     {
         using var context = DbFactory.CreateDbContext();
