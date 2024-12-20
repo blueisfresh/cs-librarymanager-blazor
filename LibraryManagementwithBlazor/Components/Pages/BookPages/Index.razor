@@ -54,9 +54,9 @@
                         <td class="border border-gray-300 px-4 py-2">@book.PublicationPlace</td>
                         <td class="border border-gray-300 px-4 py-2">@book.PublicationDate</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            <a href="@($"books/edit?booknum={book.BookNum}")" class="text-blue-500 hover:underline">Edit</a> |
-                            <a href="@($"books/details?booknum={book.BookNum}")" class="text-green-500 hover:underline">Details</a> |
-                            <a href="@($"books/delete?booknum={book.BookNum}")" class="text-red-500 hover:underline">Delete</a>
+                            <a href="@($"books/edit?booknum={book.BookNum}")" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md m-2">Edit</a>
+                            <a href="@($"books/details?booknum={book.BookNum}")" type="button" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 shadow-md m-2">Details</a>
+                            <a href="@($"books/delete?booknum={book.BookNum}")" type="button" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 shadow-md m-2">Delete</a>
                         </td>
                     </tr>
                 }
