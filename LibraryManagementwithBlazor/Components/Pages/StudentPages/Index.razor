@@ -6,61 +6,51 @@
 
 <h3 class="text-lg font-bold text-center mb-4">Student Index</h3>
 
-<div class="flex justify-between items-center mb-4">
-    <!-- Create New Button -->
-    <a href="students/create" style="margin-right: 1rem;" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
-        Create New
-    </a>
-
-    <!-- Search Box -->
-    <form action="/students" method="get" class="flex items-center border border-gray-300 rounded-lg overflow-hidden shadow-sm">
-        <input type="text"
-               name="titleFilter"
-               placeholder="Search..."
-               class="px-4 py-2 text-gray-700 focus:outline-none"
-               style="min-width: 200px;" />
-        <button type="submit"
-                class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold">
-            Search
-        </button>
-    </form>
-</div>
-
-<div class="overflow-x-auto">
-    <table class="table-auto w-full border-collapse border border-gray-300 rounded-lg">
-        <thead>
-            <tr class="bg-gray-200">
-                <th class="border border-gray-300 px-4 py-2 text-left">Library Card Number</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">First Name</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Last Name</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (filteredStudents != null && filteredStudents.Any())
-            {
-                @foreach (var student in filteredStudents)
-                {
-                    <tr class="hover:bg-gray-100">
-                        <td class="border border-gray-300 px-4 py-2">@student.LibraryCardNum</td>
-                        <td class="border border-gray-300 px-4 py-2">@student.FirstName</td>
-                        <td class="border border-gray-300 px-4 py-2">@student.LastName</td>
-                        <td class="border border-gray-300 px-4 py-2">
-                            <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">Edit</a>
-                            <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 shadow-md">Details</a>
-                            <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 shadow-md">Delete</a>
-                        </td>
-                    </tr>
-                }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="4" class="text-center text-gray-500 py-4">No students available</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="text-center px-4 py-8">
+    <h1 class="text-4xl font-bold text-gray-800 mb-4">Welcome to the Library Management System</h1>
+    <p class="text-lg text-gray-600">
+        Discover, borrow, and manage your library collection with ease.
+    </p>
+    <p class="text-lg text-gray-600 mt-2">
+        Utilize the features below to explore and manage your library:
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Books</h2>
+            <p class="text-gray-600 mb-4">Explore our collection of books and manage their details.</p>
+            <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">
+                Manage Books
+            </button>
+        </div>
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Students</h2>
+            <p class="text-gray-600 mb-4">View and manage student records seamlessly.</p>
+            <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">
+                Manage Students
+            </button>
+        </div>
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Borrow & Return</h2>
+            <p class="text-gray-600 mb-4">Handle borrowing and returning of books efficiently.</p>
+            <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">
+                Borrow/Return Books
+            </button>
+        </div>
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Statistics</h2>
+            <p class="text-gray-600 mb-4">View insights on book borrowing and library usage.</p>
+            <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">
+                View Statistics
+            </button>
+        </div>
+        <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Import & Export</h2>
+            <p class="text-gray-600 mb-4">Manage data import/export to keep your library up-to-date.</p>
+            <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">
+                Import/Export Data
+            </button>
+        </div>
+    </div>
 </div>
 
 @code {
