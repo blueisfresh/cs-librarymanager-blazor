@@ -46,9 +46,9 @@
                         <td class="border border-gray-300 px-4 py-2">@student.FirstName</td>
                         <td class="border border-gray-300 px-4 py-2">@student.LastName</td>
                         <td class="border border-gray-300 px-4 py-2">
-                            <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" class="text-blue-500 hover:underline">Edit</a> |
-                            <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" class="text-green-500 hover:underline">Details</a> |
-                            <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" class="text-red-500 hover:underline">Delete</a>
+                            <a href="@($"students/edit?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 shadow-md">Edit</a>
+                            <a href="@($"students/details?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 shadow-md">Details</a>
+                            <a href="@($"students/delete?librarycardnum={student.LibraryCardNum}")" type="button" class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 shadow-md">Delete</a>
                         </td>
                     </tr>
                 }

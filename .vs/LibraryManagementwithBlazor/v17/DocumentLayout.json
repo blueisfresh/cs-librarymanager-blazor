@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\studentpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\components\\pages\\studentpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\studentpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\components\\pages\\studentpages\\edit.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|c:\\users\\elias\\desktop\\dritte blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\tailwind.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\tailwind.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\studentpages\\create.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -21,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|c:\\users\\elias\\desktop\\dritte blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\studentpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\components\\pages\\studentpages\\details.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\studentpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\components\\pages\\studentpages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\borrowedbooks.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -53,10 +57,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\components\\pages\\importexport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\components\\pages\\importexport.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|c:\\users\\elias\\desktop\\dritte blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\tailwind.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|solutionrelative:librarymanagementwithblazor\\tailwind.config.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AFD2815D-5FC4-4D68-A73A-0D2F3EBDF766}|LibraryManagementwithBlazor\\LibraryManagementwithBlazor.csproj|C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\librarymanagementwithblazor\\wwwroot\\css\\input.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -190,11 +190,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ImportExport.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\ImportExport.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\ImportExport.razor",
@@ -208,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "BorrowedBooks.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\BorrowedBooks.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\BorrowedBooks.razor",
@@ -221,7 +221,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Details.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Details.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Details.razor",
@@ -234,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "MainLayout.razor.css",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Layout\\MainLayout.razor.css",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Layout\\MainLayout.razor.css",
@@ -247,7 +247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Edit.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\BookPages\\Edit.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\BookPages\\Edit.razor",
@@ -260,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Index.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\BookPages\\Index.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\BookPages\\Index.razor",
@@ -273,20 +273,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "Index.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Index.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Index.razor",
               "ToolTip": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Index.razor",
               "RelativeToolTip": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Index.razor",
-              "ViewState": "AQIAABQAAAAAAAAAAAAuwC0AAABUAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAuwDAAAACIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-18T13:38:24.231Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Delete.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Delete.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Delete.razor",
@@ -299,20 +299,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Edit.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Edit.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Edit.razor",
               "ToolTip": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Edit.razor",
               "RelativeToolTip": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Edit.razor",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAwFcAAAANAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAwFoAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-12-18T14:09:50.526Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Create.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Create.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Pages\\StudentPages\\Create.razor",
@@ -325,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Models\\Student.cs",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Models\\Student.cs",
@@ -338,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 2,
               "Title": "tailwind.config.js",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\tailwind.config.js",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\tailwind.config.js",
@@ -351,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "output.css",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\wwwroot\\css\\output.css",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\wwwroot\\css\\output.css",
@@ -376,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MainLayout.razor",
               "DocumentMoniker": "C:\\Users\\elias\\Desktop\\dritte Blockwoche\\librarymanagementwithblazor\\LibraryManagementwithBlazor\\Components\\Layout\\MainLayout.razor",
               "RelativeDocumentMoniker": "LibraryManagementwithBlazor\\Components\\Layout\\MainLayout.razor",
