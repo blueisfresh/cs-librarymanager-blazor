@@ -5,25 +5,31 @@
 
 <PageTitle>Details</PageTitle>
 
-<h1>Details</h1>
-
-<div>
-    <h2>Student</h2>
-    <hr />
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+    <h3 class="text-xl font-bold text-center">Student Details</h3>
     @if (student is null)
     {
-        <p><em>Loading...</em></p>
+        <p class="text-center text-gray-500"><em>Loading...</em></p>
     }
-    else {
-        <dl class="row">
-            <dt class="col-sm-2">FirstName</dt>
-            <dd class="col-sm-10">@student.FirstName</dd>
-            <dt class="col-sm-2">LastName</dt>
-            <dd class="col-sm-10">@student.LastName</dd>
+    else
+    {
+        <dl class="space-y-2">
+            <div class="flex justify-between">
+                <dt class="font-medium">First Name:</dt>
+                <dd>@student.FirstName</dd>
+            </div>
+            <div class="flex justify-between">
+                <dt class="font-medium">Last Name:</dt>
+                <dd>@student.LastName</dd>
+            </div>
         </dl>
-        <div>
-            <a href="@($"/students/edit?librarycardnum={student.LibraryCardNum}")">Edit</a> |
-            <a href="@($"/students")">Back to List</a>
+        <div class="flex justify-center space-x-4 mt-4">
+            <a href="@($"/students/edit?librarycardnum={student.LibraryCardNum}")" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                Edit
+            </a>
+            <a href="/students" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                Back to List
+            </a>
         </div>
     }
 </div>

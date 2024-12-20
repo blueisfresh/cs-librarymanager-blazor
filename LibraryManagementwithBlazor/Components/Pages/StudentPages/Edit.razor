@@ -3,42 +3,52 @@
 @inject IDbContextFactory<LibraryManagementwithBlazor.Data.LibraryManagementwithBlazorContext> DbFactory
 @inject NavigationManager NavigationManager
 
-<PageTitle>Edit</PageTitle>
+<PageTitle>Edit Student</PageTitle>
 
-<h1>Edit</h1>
+<div class="p-6 max-w-md mx-auto bg-white rounded-xl shadow-md space-y-4">
+    <h3 class="text-xl font-bold text-center">Edit Student</h3>
+    @if (Student is null)
+    {
+        <p class="text-center text-gray-500"><em>Loading...</em></p>
+    }
+    else
+    {
+        <EditForm method="post" Model="Student" OnValidSubmit="UpdateStudent" class="space-y-4">
+            <DataAnnotationsValidator />
+            <ValidationSummary class="text-danger" />
 
-<h2>Student</h2>
-<hr />
-@if (Student is null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <div class="row">
-        <div class="col-md-4">
-            <EditForm method="post" Model="Student" OnValidSubmit="UpdateStudent" FormName="edit" Enhance>
-                <DataAnnotationsValidator />
-                <ValidationSummary role="alert"/>
-                <input type="hidden" name="Student.LibraryCardNum" value="@Student.LibraryCardNum" />
-                <div class="mb-3">
-                    <label for="firstname" class="form-label">FirstName:</label>
-                    <InputText id="firstname" @bind-Value="Student.FirstName" class="form-control" aria-required="true"/>
-                    <ValidationMessage For="() => Student.FirstName" class="text-danger" />
-                </div>
-                <div class="mb-3">
-                    <label for="lastname" class="form-label">LastName:</label>
-                    <InputText id="lastname" @bind-Value="Student.LastName" class="form-control" aria-required="true"/>
-                    <ValidationMessage For="() => Student.LastName" class="text-danger" />
-                </div>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </EditForm>
-        </div>
-    </div>
-}
+            <!-- Library Card Number -->
+            <div class="space-y-1">
+                <label for="librarycardnum" class="font-medium">Library Card Number:</label>
+                <InputNumber id="librarycardnum" @bind-Value="Student.LibraryCardNum" class="w-full border border-gray-300 rounded-md p-2" aria-required="true" disabled />
+                <ValidationMessage For="() => Student.LibraryCardNum" class="text-red-500 text-sm" />
+            </div>
 
-<div>
-    <a href="/students">Back to List</a>
+            <!-- First Name -->
+            <div class="space-y-1">
+                <label for="firstname" class="font-medium">First Name:</label>
+                <InputText id="firstname" @bind-Value="Student.FirstName" class="w-full border border-gray-300 rounded-md p-2" aria-required="true" />
+                <ValidationMessage For="() => Student.FirstName" class="text-red-500 text-sm" />
+            </div>
+
+            <!-- Last Name -->
+            <div class="space-y-1">
+                <label for="lastname" class="font-medium">Last Name:</label>
+                <InputText id="lastname" @bind-Value="Student.LastName" class="w-full border border-gray-300 rounded-md p-2" aria-required="true" />
+                <ValidationMessage For="() => Student.LastName" class="text-red-500 text-sm" />
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-center space-x-4 mt-4">
+                <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                    Save
+                </button>
+                <a href="/students" class="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600">
+                    Back to List
+                </a>
+            </div>
+        </EditForm>
+    }
 </div>
 
 @code {
@@ -59,8 +69,6 @@ else
         }
     }
 
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more information, see https://learn.microsoft.com/aspnet/core/blazor/forms/#mitigate-overposting-attacks.
     private async Task UpdateStudent()
     {
         using var context = DbFactory.CreateDbContext();
