@@ -7,7 +7,7 @@ This repository is part of a multi-platform Library Management System built in t
 
 All three versions share the same goal: to manage books, students, and borrowing/return operations in a library. The WPF version highlights desktop application development using MVVM and a local SQL database.
 
->> Why multiple versions?
+> Why multiple versions?
 These projects were created during my apprenticeship to demonstrate how the same functionality can be implemented across desktop (WPF), web (Blazor), and mobile (.NET MAUI) platforms.
 
 ⸻
