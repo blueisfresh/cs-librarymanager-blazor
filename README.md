@@ -10,16 +10,12 @@ All three versions share the same goal: to manage books, students, and borrowing
 > Why multiple versions?
 These projects were created during my apprenticeship to demonstrate how the same functionality can be implemented across desktop (WPF), web (Blazor), and mobile (.NET MAUI) platforms.
 
-⸻
-
 ## Table of Contents
 	1.	Overview
 	2.	Core Features
 	3.	Installation and Usage
 	•	Database Setup
 	•	Build and Run
-
-⸻
 
 ## Overview
 
@@ -35,16 +31,12 @@ This application allows librarians or administrators to:
 	•	Import/Export Data: (Optional) for backup or data transfer.
 	•	View Statistics: For instance, most borrowed books or most active students (if implemented).
 
-⸻
-
 ## Core Features
 	1.	Add/Edit/Delete Books: Perform CRUD operations on book data (title, author, ISBN, etc.).
 	2.	Add/Edit/Delete Students: Manage library members (names, IDs, etc.).
 	3.	Borrow/Return Tracking: Log when students borrow and return books.
 	4.	Data Import/Export: Optionally import existing data or export current data for backup.
 	5.	Statistics (Optional): Generate statistics like most frequently borrowed books or top borrowers.
-
-⸻
 
 ## Installation and Usage
 
