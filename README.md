@@ -82,8 +82,3 @@ dotnet build
 	5.	Run the Application
 
 dotnet run
-
-If you are using Blazor Server, the app will usually launch at https://localhost:5001 or http://localhost:5000 (check console output for the exact URL).
-If you are using Blazor WebAssembly, the Server or API project must also run. In that case:
-	•	Run the server/API project first (e.g., dotnet run --project MyBlazor.Api)
-	•	Then the Blazor WebAssembly client (dotnet run --project MyBlazor.Client).
