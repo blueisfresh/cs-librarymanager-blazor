@@ -1,14 +1,14 @@
-# Library Management System – WPF Version
+# Library Management System – Blazor Version
 
 This repository is part of a multi-platform Library Management System built in three different .NET frameworks:
-	•	WPF (this repo)
-	•	Blazor – Provides a REST API and a web front end.
-	•	.NET MAUI (mobile version)
+	•	WPF – A desktop application using MVVM and a local SQL database.
+	•	Blazor (this repository) – Provides a REST API and a web front end.
+	•	.NET MAUI – A mobile version that consumes the Blazor REST API.
 
-All three versions share the same goal: to manage books, students, and borrowing/return operations in a library. The WPF version highlights desktop application development using MVVM and a local SQL database.
+All three versions share the same goal: managing books, students, and borrowing/return operations in a library. They differ in their user interface layer and some architectural details.
 
 > Why multiple versions?
-These projects were created during my apprenticeship to demonstrate how the same functionality can be implemented across desktop (WPF), web (Blazor), and mobile (.NET MAUI) platforms.
+These projects were created during my apprenticeship to demonstrate how the same core functionality can be adapted for desktop (WPF), web (Blazor), and mobile (.NET MAUI) platforms.
 
 ## Table of Contents
 	1.	Overview
@@ -19,49 +19,61 @@ These projects were created during my apprenticeship to demonstrate how the same
 
 ## Overview
 
-The WPF version of the Library Management System is a traditional desktop application that provides:
-	•	Desktop UI built using WPF (Windows Presentation Foundation).
-	•	MVVM Architecture to separate concerns between UI and business logic.
-	•	Repository Pattern for data access (e.g., BookRepository, StudentRepository, BorrowRepository).
+The Blazor version of the Library Management System provides:
+	•	Web UI built with Blazor (Server or WebAssembly).
+	•	REST API endpoints (if separating your front end from your backend).
+	•	Entity Framework Core for data access to the same SQL database used by the WPF version.
 
-This application allows librarians or administrators to:
+Highlights
+	•	Responsive Web Front End: Access the library management system via any modern browser.
+	•	Separation of Concerns: Blazor pages and components connect to your data layer through a repository or direct EF Core usage.
+	•	Shared Database: Optionally share the same SQL database used by the WPF and .NET MAUI versions.
+
+This web application allows librarians or administrators to:
 	•	Manage Books: Add, edit, and delete book records.
 	•	Manage Students: Add, edit, and delete student records.
-	•	Track Borrowing/Returning: Keep a log of which students borrowed which books and when they are returned.
-	•	Import/Export Data: (Optional) for backup or data transfer.
-	•	View Statistics: For instance, most borrowed books or most active students (if implemented).
+	•	Track Borrowing/Returning: Keep a log of which students borrowed which books, and track when they are returned.
+	•	(Optional) Statistics: View analytics (e.g., top borrowed books).
+	•	(Optional) User Management/Authentication: If implemented, handle user accounts for different roles (e.g., admin, guest).
 
 ## Core Features
+
 	1.	Add/Edit/Delete Books: Perform CRUD operations on book data (title, author, ISBN, etc.).
 	2.	Add/Edit/Delete Students: Manage library members (names, IDs, etc.).
-	3.	Borrow/Return Tracking: Log when students borrow and return books.
-	4.	Data Import/Export: Optionally import existing data or export current data for backup.
-	5.	Statistics (Optional): Generate statistics like most frequently borrowed books or top borrowers.
+	3.	Borrow/Return Tracking: Log when students borrow and return books, including due dates or timestamps.
+	4.	REST API: Expose library data for consumption by other clients (like the .NET MAUI version).
+	5.	Statistics (Optional): Generate statistics such as most frequently borrowed books or top borrowers.
 
 ## Installation and Usage
 
 ### Database Setup
+
 	1.	Create/Initialize the Database
 	•	Run LibraryManagementDB.sql to create the database schema.
 	•	Run DB-initializationScript.sql to create necessary tables.
 	•	Run InsertValuesScript.sql to insert sample data (if desired).
 	2.	Configure the Connection String
-	•	In the WPF project, locate the configuration for the connection string (e.g., in App.config or wherever you store it).
-	•	Ensure it points to the SQL Server instance where you ran the scripts.
+	•	In your Blazor project, find the appsettings.json (or appsettings.Development.json if you prefer) and update the "ConnectionStrings" section to match your SQL database.
+	•	Ensure your server name, database name, user credentials (if any), and other settings are correct.
 
-Note: The Blazor project can also use the same database; if you plan to set up both WPF and Blazor to share data, make sure they point to the exact same database instance.
+Note: If you have already set up the database for the WPF version, you can reuse the same database for the Blazor app. Just make sure the connection string points to the same DB instance.
 
 ### Build and Run
+
 	1.	Clone the Repository
 
-git clone https://github.com/your-username/library-management-wpf.git
-cd library-management-wpf
+git clone https://github.com/your-username/cs-librarymanager-blazor.git
+cd cs-librarymanager-blazor
 
 
-	2.	Open the Solution
-	•	Open LibraryManagement.sln in Visual Studio.
+	2.	Open in Visual Studio
+	•	Open the .sln file in Visual Studio (or your preferred IDE).
 	3.	Restore NuGet Packages
-	•	Visual Studio should automatically restore packages; otherwise, use dotnet restore.
+	•	Visual Studio typically handles this automatically, but if needed, run:
+
+dotnet restore
+
+
 	4.	Build the Project
 
 dotnet build
@@ -69,8 +81,9 @@ dotnet build
 
 	5.	Run the Application
 
-dotnet run --project LibraryManagement
+dotnet run
 
-Alternatively, press F5 or click Start in Visual Studio.
-
-Enjoy managing your library with the WPF edition! For more details on other platforms, explore the related Blazor and .NET MAUI repositories.
+If you are using Blazor Server, the app will usually launch at https://localhost:5001 or http://localhost:5000 (check console output for the exact URL).
+If you are using Blazor WebAssembly, the Server or API project must also run. In that case:
+	•	Run the server/API project first (e.g., dotnet run --project MyBlazor.Api)
+	•	Then the Blazor WebAssembly client (dotnet run --project MyBlazor.Client).
